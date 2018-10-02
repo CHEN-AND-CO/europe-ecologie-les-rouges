@@ -15,8 +15,8 @@ class __TwigTemplate_6cbfcd2e4977bd74861dd91f70c87d3d694d610dddb40b6d16dc06aa0af
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_014f512235f6fcaf338eac8fde60e6f16f57319e32cb24f496f3371f08c59f4a = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_014f512235f6fcaf338eac8fde60e6f16f57319e32cb24f496f3371f08c59f4a->enter($__internal_014f512235f6fcaf338eac8fde60e6f16f57319e32cb24f496f3371f08c59f4a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@FrontOffice/header.html"));
+        $__internal_7cf3a60007ab4c904383b16a2bf7d24517c1c2c0ec1df8a73cf9afe6b84142df = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_7cf3a60007ab4c904383b16a2bf7d24517c1c2c0ec1df8a73cf9afe6b84142df->enter($__internal_7cf3a60007ab4c904383b16a2bf7d24517c1c2c0ec1df8a73cf9afe6b84142df_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@FrontOffice/header.html"));
 
         // line 1
         echo "<!--
@@ -53,7 +53,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </ul>
 </header>";
         
-        $__internal_014f512235f6fcaf338eac8fde60e6f16f57319e32cb24f496f3371f08c59f4a->leave($__internal_014f512235f6fcaf338eac8fde60e6f16f57319e32cb24f496f3371f08c59f4a_prof);
+        $__internal_7cf3a60007ab4c904383b16a2bf7d24517c1c2c0ec1df8a73cf9afe6b84142df->leave($__internal_7cf3a60007ab4c904383b16a2bf7d24517c1c2c0ec1df8a73cf9afe6b84142df_prof);
 
     }
 
