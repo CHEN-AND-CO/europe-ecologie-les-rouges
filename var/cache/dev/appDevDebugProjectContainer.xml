@@ -17,6 +17,7 @@
       <parameter key="SensioFrameworkExtraBundle">Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle</parameter>
       <parameter key="AppBundle">AppBundle\AppBundle</parameter>
       <parameter key="FrontOfficeBundle">FrontOfficeBundle\FrontOfficeBundle</parameter>
+      <parameter key="BackOfficeBundle">BackOfficeBundle\BackOfficeBundle</parameter>
       <parameter key="DebugBundle">Symfony\Bundle\DebugBundle\DebugBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
@@ -67,6 +68,11 @@
         <parameter key="parent">null</parameter>
         <parameter key="path">/home/kevin/Projets/symfony/europe-ecologie-les-rouges/src/FrontOfficeBundle</parameter>
         <parameter key="namespace">FrontOfficeBundle</parameter>
+      </parameter>
+      <parameter key="BackOfficeBundle" type="collection">
+        <parameter key="parent">null</parameter>
+        <parameter key="path">/home/kevin/Projets/symfony/europe-ecologie-les-rouges/src/BackOfficeBundle</parameter>
+        <parameter key="namespace">BackOfficeBundle</parameter>
       </parameter>
       <parameter key="DebugBundle" type="collection">
         <parameter key="parent">null</parameter>
@@ -514,7 +520,7 @@
                   <tag name="cache.pool"/>
                   <argument>wCVItg5RUC</argument>
                   <argument>0</argument>
-                  <argument>kxICaMv7IbtiCoE5TfHuOn</argument>
+                  <argument>ohUZstHCrmDnMkwKinwFX+</argument>
                   <argument>/home/kevin/Projets/symfony/europe-ecologie-les-rouges/var/cache/dev/pools</argument>
                   <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
                   <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -527,7 +533,7 @@
                   <tag name="cache.pool"/>
                   <argument>iIvOtF7zrE</argument>
                   <argument>0</argument>
-                  <argument>kxICaMv7IbtiCoE5TfHuOn</argument>
+                  <argument>ohUZstHCrmDnMkwKinwFX+</argument>
                   <argument>/home/kevin/Projets/symfony/europe-ecologie-les-rouges/var/cache/dev/pools</argument>
                   <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
                   <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -859,7 +865,7 @@
       <tag name="cache.pool"/>
       <argument>588oSslYXO</argument>
       <argument>0</argument>
-      <argument>kxICaMv7IbtiCoE5TfHuOn</argument>
+      <argument>ohUZstHCrmDnMkwKinwFX+</argument>
       <argument>/home/kevin/Projets/symfony/europe-ecologie-les-rouges/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -1595,7 +1601,7 @@
       <argument type="collection">
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>5bb363fc5852f9.79269774</argument>
+            <argument>5bb3664a5a2d26.91630369</argument>
           </service>
         </argument>
       </argument>
@@ -1729,7 +1735,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>5bb363fc5852f9.79269774</argument>
+            <argument>5bb3664a5a2d26.91630369</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -2637,6 +2643,10 @@
       <call method="addPath">
         <argument>/home/kevin/Projets/symfony/europe-ecologie-les-rouges/src/FrontOfficeBundle/Resources/views</argument>
         <argument>FrontOffice</argument>
+      </call>
+      <call method="addPath">
+        <argument>/home/kevin/Projets/symfony/europe-ecologie-les-rouges/src/BackOfficeBundle/Resources/views</argument>
+        <argument>BackOffice</argument>
       </call>
       <call method="addPath">
         <argument>/home/kevin/Projets/symfony/europe-ecologie-les-rouges/vendor/symfony/symfony/src/Symfony/Bundle/DebugBundle/Resources/views</argument>

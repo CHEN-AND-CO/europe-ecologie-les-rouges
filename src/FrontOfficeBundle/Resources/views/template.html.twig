@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block head %}
+            <link rel="stylesheet" href="{{ asset('index.css') }}" />
+            <title>{% block title %}{% endblock %} - My Webpage</title>
+        {% endblock %}
+    </head>
+    <body>
+        {% include '@FrontOffice/header.html' %}
+        <div id="content">{% block content %}{% endblock %}</div>
+        {% include '@FrontOffice/footer.html' %}
+    </body>
+</html>
