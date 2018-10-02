@@ -79,6 +79,7 @@
   'SwiftmailerBundle:Collector:swiftmailer.html.twig' => '/home/kevin/Projets/symfony/europe-ecologie-les-rouges/vendor/symfony/swiftmailer-bundle/Resources/views/Collector/swiftmailer.html.twig',
   'DoctrineBundle:Collector:db.html.twig' => '/home/kevin/Projets/symfony/europe-ecologie-les-rouges/vendor/doctrine/doctrine-bundle/Resources/views/Collector/db.html.twig',
   'DoctrineBundle:Collector:explain.html.twig' => '/home/kevin/Projets/symfony/europe-ecologie-les-rouges/vendor/doctrine/doctrine-bundle/Resources/views/Collector/explain.html.twig',
+  'FrontOfficeBundle::template.html.twig' => '/home/kevin/Projets/symfony/europe-ecologie-les-rouges/src/FrontOfficeBundle/Resources/views/template.html.twig',
   'FrontOfficeBundle:Default:index.html.twig' => '/home/kevin/Projets/symfony/europe-ecologie-les-rouges/src/FrontOfficeBundle/Resources/views/Default/index.html.twig',
   'BackOfficeBundle:Default:index.html.twig' => '/home/kevin/Projets/symfony/europe-ecologie-les-rouges/src/BackOfficeBundle/Resources/views/Default/index.html.twig',
   'DebugBundle:Profiler:dump.html.twig' => '/home/kevin/Projets/symfony/europe-ecologie-les-rouges/vendor/symfony/symfony/src/Symfony/Bundle/DebugBundle/Resources/views/Profiler/dump.html.twig',
