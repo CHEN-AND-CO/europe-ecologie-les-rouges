@@ -1,3 +1,23 @@
 back_office_homepage:
     path:     /
     defaults: { _controller: BackOfficeBundle:Default:index }
+
+back_office_user_list:
+    path:     /user
+    defaults: { _controller: BackOfficeBundle:User:index }
+
+back_office_user_create:
+    path:     /user/create
+    defaults: { _controller: BackOfficeBundle:User:create }
+
+back_office_user_add:
+    path:     /user/add
+    defaults: { _controller: BackOfficeBundle:User:add }
+    
+back_office_user_modify:
+    path:     /user/modify
+    defaults: { _controller: BackOfficeBundle:User:modify }
+
+back_office_user_delete:
+    path:     /user/delete
+    defaults: { _controller: BackOfficeBundle:User:delete }
