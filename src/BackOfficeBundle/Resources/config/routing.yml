@@ -21,3 +21,45 @@ back_office_user_modify:
 back_office_user_delete:
     path:     /user/delete
     defaults: { _controller: BackOfficeBundle:User:delete }
+    
+
+back_office_service_list:
+    path:     /service
+    defaults: { _controller: BackOfficeBundle:Service:index }
+
+back_office_service_create:
+    path:     /service/create
+    defaults: { _controller: BackOfficeBundle:Service:create }
+
+back_office_service_add:
+    path:     /service/add
+    defaults: { _controller: BackOfficeBundle:Service:add }
+    
+back_office_service_modify:
+    path:     /service/modify
+    defaults: { _controller: BackOfficeBundle:Service:modify }
+
+back_office_service_delete:
+    path:     /service/delete
+    defaults: { _controller: BackOfficeBundle:Service:delete }
+
+
+back_office_societe_list:
+    path:     /societe
+    defaults: { _controller: BackOfficeBundle:Societe:index }
+
+back_office_societe_create:
+    path:     /societe/create
+    defaults: { _controller: BackOfficeBundle:Societe:create }
+
+back_office_societe_add:
+    path:     /societe/add
+    defaults: { _controller: BackOfficeBundle:Societe:add }
+    
+back_office_societe_modify:
+    path:     /societe/modify
+    defaults: { _controller: BackOfficeBundle:Societe:modify }
+
+back_office_societe_delete:
+    path:     /societe/delete
+    defaults: { _controller: BackOfficeBundle:Societe:delete }
