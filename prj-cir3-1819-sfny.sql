@@ -20,6 +20,9 @@ SET time_zone = "+00:00";
 -- Base de données :  `prj-cir3-1819-sfny`
 --
 
+CREATE DATABASE IF NOT EXISTS `frm1` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `frm1`;
+
 -- --------------------------------------------------------
 
 --
