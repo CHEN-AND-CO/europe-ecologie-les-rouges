@@ -1,0 +1,16 @@
+footer {
+  text-align:center;
+}
+
+.section-title {
+  text-align:center;
+}
+
+body {
+  /*background-color:white;*/
+  background-color:#dddddd;
+}
+
+div.jumbotron {
+  margin-top: 1%;
+}
