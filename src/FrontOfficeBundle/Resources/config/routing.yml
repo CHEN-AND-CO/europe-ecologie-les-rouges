@@ -1,3 +1,12 @@
 front_office_homepage:
     path:     /
     defaults: { _controller: FrontOfficeBundle:Default:index }
+
+
+front_office_travels:
+    path:     /mes_deplacements
+    defaults: { _controller: FrontOfficeBundle:Default:travels }
+
+front_office_profil:
+    path:     /mon_profil
+    defaults: { _controller: FrontOfficeBundle:Default:profil }

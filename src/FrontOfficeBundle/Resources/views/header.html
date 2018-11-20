@@ -14,20 +14,20 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
-<header class="page-header container">
-    <div id="main-title">
-        <h1>EER - Comptabilisez vos trajets écologiques</h1>
-    </div>
-
-    <ul class="hnav">
-        <li>
-            <a href="/">Accueil</a>
-        </li>
-        <li>
-            <a href="/">Liste</a>
-        </li>
-        <li>
-            <a href="/">Edition</a>
-        </li>
-    </ul>
+<header>
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean">
+        <div class="container"><a class="navbar-brand" href="{{path('front_office_homepage')}}">EER - Comptabilisez vos trajets écologiques<br></a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div
+                class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="{{path('front_office_homepage')}}">Acceuil</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="deplacements.html">Mes déplacements</a></li>
+                    <li class="dropdown"><a class="dropdown-toggle nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="{{path('front_office_travels')}}">Julien Rambert</a>
+                        <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="{{path('front_office_profil')}}">Mon profil</a>
+                            <div class="dropdown-divider" role="presentation"></div><a class="dropdown-item" role="presentation" href="#">Déconnexion</a></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 </header>

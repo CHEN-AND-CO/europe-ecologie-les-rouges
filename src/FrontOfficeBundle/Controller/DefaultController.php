@@ -10,4 +10,14 @@ class DefaultController extends Controller
     {
         return $this->render('FrontOfficeBundle:Default:index.html.twig');
     }
+
+    public function travelAction()
+    {
+        return $this->render('FrontOfficeBundle:Default:travels.html.twig');
+    }
+
+    public function profilAction()
+    {
+        return $this->render('FrontOfficeBundle:Default:profil.html.twig');
+    }
 }
