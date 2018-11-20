@@ -1,26 +1,23 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        {% block head %}
-            <meta charset="UTF-8" />
-            <title>{% block title %}{% endblock %} - EER</title>
-            {% include '@BackOffice/includes.html.twig' %}
-                        
-            <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-        {% endblock %}
-        
-    </head>
-    <body>
+{% block head %}
+    <meta charset="UTF-8" />
+    <title>{% block title %}{% endblock %} - EER</title>
+    {% include '@BackOffice/includes.html.twig' %}
 
-        {% include '@FrontOffice/header.html' %}
-        
-        {% block body %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+{% endblock %}
 
-        {% include '@FrontOffice/footer.html' %}
+{% block header_include %}
+    {% include '@FrontOffice/header.html' %}
+{%endblock %}
+{% block content %}{% endblock %}
+{% block footer_include %}
+    {% include '@FrontOffice/footer.html' %}
+{%endblock %}
 
-        {% block javascripts %}{% endblock %}
-        
-        <script src="https://code.jquery.com/jquery.min.js"></script>
-        <script src="{{asset('js/bootstrap.js')}}"></script>
-    </body>
-</html>
+{% block javascripts %}
+
+{% endblock %}
+
+<script src="https://code.jquery.com/jquery.min.js"></script>
+<script src="{{asset('js/bootstrap.js')}}"></script>
+
