@@ -3,18 +3,17 @@
     <head>
         {% block head %}
             {% block link %}
-                {% include '@Ds/Templates/includes_template.html.twig' %}
+                {% include '@BackOffice/Templates/includes_template.html.twig' %}
             {% endblock %}
-            <title>{% block title %}{% endblock %} - My Webpage </title>
         {% endblock %}
     </head>
     <body>
         {% block header_include %}
-            {% include '@Ds/Templates/header_template.html.twig' %}
+            {% include '@BackOffice/Templates/header_template.html.twig' %}
         {% endblock %}
         <div id="content">{% block content %}{% endblock %}</div>
         {% block footer_include %}
-            {% include '@Ds/Templates/footer_template.html.twig' %}
+            {% include '@BackOffice/Templates/footer_template.html.twig' %}
         {% endblock %}
     </body>
 </html>

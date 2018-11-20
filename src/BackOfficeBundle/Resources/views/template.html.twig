@@ -2,13 +2,25 @@
 <html>
     <head>
         {% block head %}
-            <link rel="stylesheet" href="{{ asset('index.css') }}" />
-            <title>{% block title %}{% endblock %} - My Webpage</title>
+            <meta charset="UTF-8" />
+            <title>{% block title %}{% endblock %} - EER</title>
+            {% include '@BackOffice/includes.html.twig' %}
+                        
+            <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         {% endblock %}
+        
     </head>
     <body>
+
         {% include '@FrontOffice/header.html' %}
-        <div id="content">{% block content %}{% endblock %}</div>
+        
+        {% block body %}{% endblock %}
+
         {% include '@FrontOffice/footer.html' %}
+
+        {% block javascripts %}{% endblock %}
+        
+        <script src="https://code.jquery.com/jquery.min.js"></script>
+        <script src="{{asset('js/bootstrap.js')}}"></script>
     </body>
 </html>
