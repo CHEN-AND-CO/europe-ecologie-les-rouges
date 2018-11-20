@@ -6,11 +6,21 @@ footer {
   text-align:center;
 }
 
-body {
-  /*background-color:white;*/
-  background-color:#dddddd;
+input[type=checkbox]:checked ~ div#password-group {
+  display:inherit;
 }
 
-div.jumbotron {
-  margin-top: 1%;
+body {
+  background-color:rgb(221,221,221);
 }
+
+#profil-form {
+  background-color:#ffffff;
+  padding-bottom:1%;
+  border-radius:5px;
+}
+
+#password-group {
+  display:none;
+}
+
