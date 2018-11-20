@@ -11,7 +11,7 @@ class DefaultController extends Controller
         return $this->render('FrontOfficeBundle:Default:index.html.twig');
     }
 
-    public function travelAction()
+    public function travelsAction()
     {
         return $this->render('FrontOfficeBundle:Default:travels.html.twig');
     }
