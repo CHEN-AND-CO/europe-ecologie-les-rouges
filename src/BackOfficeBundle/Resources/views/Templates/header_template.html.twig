@@ -1,0 +1,21 @@
+<header class="page-header container">
+    {% block header %}
+        <div id="main-title">
+            {% block header_logo %}
+                <img id="logo" class="circle" src="#" alt="NO LOGO" />
+            {% endblock %}
+            {% block header_title %}
+                <h1> Title</h1>
+            {% endblock %}
+        </div>
+
+        <ul class="hnav">
+            {% block header_navbar %}
+                <li>
+                    <a href="/"> Element </a>
+                </li>
+            {% endblock %}
+        </ul>
+
+    {% endblock %}
+</header>
