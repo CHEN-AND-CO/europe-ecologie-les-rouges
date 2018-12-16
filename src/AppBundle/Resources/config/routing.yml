@@ -1,0 +1,4 @@
+
+login:
+    path:     /
+    defaults: { _controller: AppBundle:Security:login }

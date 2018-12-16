@@ -1,5 +1,0 @@
-php bin/console doctrine:mapping:import --force BackOfficeBundle yml
-
-//php bin/console doctrine:mapping:convert yml ./src
-
-php bin/console doctrine:generate:entities BackOfficeBundle
