@@ -52,4 +52,3 @@ class TypeUser
         return $this->typeUser;
     }
 }
-

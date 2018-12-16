@@ -139,4 +139,3 @@ class TypeDeplacement
         return $this->updated;
     }
 }
-
