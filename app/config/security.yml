@@ -5,7 +5,13 @@ security:
     # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
         in_memory:
-            memory: ~
+            memory: 
+                users:
+                    Rambert:
+                        password: $2y$13$KzCyFJOyqwvywvo6GQ9Bm.2X/tdGrNRTOX.YJV9NvejshMk4gS9oG
+                        roles: 'ROLE_USER'
+    encoders:
+        Symfony\Component\Security\Core\User\User: bcrypt
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -15,6 +21,12 @@ security:
 
         main:
             anonymous: ~
+            form_login:
+                login_path: login
+                check_path: login
+            logout:
+                    path:   /logout
+                    target: /
             # activate different ways to authenticate
 
             # http_basic: ~
@@ -22,3 +34,10 @@ security:
 
             # form_login: ~
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+    
+    access_control:
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY && !IS_AUTHENTICADED_FULLY }
+        - { path: ^/[^l], roles: ROLE_USER }
+
+
+    

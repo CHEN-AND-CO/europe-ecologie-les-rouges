@@ -110,4 +110,3 @@ class Societe
         return $this->ville;
     }
 }
-

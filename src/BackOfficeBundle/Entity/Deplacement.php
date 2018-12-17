@@ -255,4 +255,3 @@ class Deplacement
         return $this->user1;
     }
 }
-

@@ -255,4 +255,3 @@ class DeplacementJour
         return $this->typeDeplacement;
     }
 }
-
