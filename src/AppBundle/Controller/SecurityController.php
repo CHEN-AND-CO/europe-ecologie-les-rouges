@@ -11,6 +11,10 @@ class SecurityController extends Controller
 {
     public function loginAction(Request $request)
     {
+        $auth_checker = $this->get('security.authorization_checker');
+        if ($auth_checker->isGranted('ROLE_USER')) {
+            return $this->redirectToRoute('front_office_homepage');
+        }
 
         $authenticationUtils = $this->get('security.authentication_utils');
 
