@@ -8,7 +8,9 @@ class UserController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('BackOfficeBundle:User:index.html.twig');
+        $listeUser = $this->getDoctrine()->getRepository(User::class)->findAll();
+
+        return $this->render('BackOfficeBundle:User:index.html.twig', array('users' => $listeUser));
     }
     
     public function createAction(){
