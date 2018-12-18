@@ -1,0 +1,9 @@
+{% extends "@BackOffice/template.html.twig" %}
+
+{% block title %} Liste des utilisateurs {% endblock %}
+{% block content %}
+    <h1> {{user.getNom()}} {{user.getPrenom()}} </h1>
+   
+    <a class="button" href="{{ path('back_office_user_delete', {'id': user.getId()})}}"> Delete </a>
+    <a class="button" href="{{ path('back_office_user_list') }}"> Retour </a>
+{% endblock %}

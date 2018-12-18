@@ -16,10 +16,10 @@ class UserController extends Controller {
         return $this->render('BackOfficeBundle:User:index.html.twig', array('users' => $listeUser));
     }
 
-    public function userAction($i) {
-        $user = $this->getDoctrine()->getRepository(User::class)->find($i);
+    public function showAction($id) {
+        $user = $this->getDoctrine()->getRepository(User::class)->find($id);
 
-        return $this->render('BackOfficeBundle:User:user.html.twig', array('user' => $user));
+        return $this->render('BackOfficeBundle:User:show.html.twig', array('user' => $user));
     }
 
     public function createAction(Request $request) {

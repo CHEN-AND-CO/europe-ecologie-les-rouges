@@ -6,6 +6,10 @@ back_office_user_list:
     path:     /user
     defaults: { _controller: BackOfficeBundle:User:index }
 
+back_office_user_show:
+    path:     /user/show/{id}
+    defaults: { _controller: BackOfficeBundle:User:show }
+
 back_office_user_create:
     path:     /user/create
     defaults: { _controller: BackOfficeBundle:User:create }
@@ -19,7 +23,7 @@ back_office_user_modify:
     defaults: { _controller: BackOfficeBundle:User:modify }
 
 back_office_user_delete:
-    path:     /user/delete
+    path:     /user/delete/{id}
     defaults: { _controller: BackOfficeBundle:User:delete }
     
 
