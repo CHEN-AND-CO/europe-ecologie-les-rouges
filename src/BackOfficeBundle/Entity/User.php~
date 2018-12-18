@@ -1,0 +1,108 @@
+<?php
+
+namespace BackOfficeBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * User
+ *
+ * @ORM\Table(name="user", indexes={@ORM\Index(name="fk_user_type_user_idx", columns={"type_user_id"}), @ORM\Index(name="fk_user_societe1_idx", columns={"societe_id"}), @ORM\Index(name="fk_user_service1_idx", columns={"service_id"}), @ORM\Index(name="fk_user_ville1_idx", columns={"ville_id"})})
+ * @ORM\Entity
+ */
+class User
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=100, nullable=true)
+     */
+    private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prenom", type="string", length=100, nullable=true)
+     */
+    private $prenom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adresse", type="string", length=255, nullable=true)
+     */
+    private $adresse;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="distance_init", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $distanceInit;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created", type="datetime", nullable=true)
+     */
+    private $created;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated", type="datetime", nullable=true)
+     */
+    private $updated;
+
+    /**
+     * @var \Service
+     *
+     * @ORM\ManyToOne(targetEntity="Service")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="service_id", referencedColumnName="id")
+     * })
+     */
+    private $service;
+
+    /**
+     * @var \Societe
+     *
+     * @ORM\ManyToOne(targetEntity="Societe")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="societe_id", referencedColumnName="id")
+     * })
+     */
+    private $societe;
+
+    /**
+     * @var \TypeUser
+     *
+     * @ORM\ManyToOne(targetEntity="TypeUser")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="type_user_id", referencedColumnName="id")
+     * })
+     */
+    private $typeUser;
+
+    /**
+     * @var \Ville
+     *
+     * @ORM\ManyToOne(targetEntity="Ville")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ville_id", referencedColumnName="id")
+     * })
+     */
+    private $ville;
+
+
+}
+

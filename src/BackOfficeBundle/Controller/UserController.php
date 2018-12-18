@@ -3,29 +3,80 @@
 namespace BackOfficeBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use BackOfficeBundle\Entity\User;
+use BackOfficeBundle\Form\UserType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
-class UserController extends Controller
-{
-    public function indexAction()
-    {
+class UserController extends Controller {
+
+    public function indexAction() {
         $listeUser = $this->getDoctrine()->getRepository(User::class)->findAll();
 
         return $this->render('BackOfficeBundle:User:index.html.twig', array('users' => $listeUser));
     }
-    
-    public function createAction(){
-        return $this->render('BackOfficeBundle:User:create.html.twig');
+
+    public function userAction($i) {
+        $user = $this->getDoctrine()->getRepository(User::class)->find($i);
+
+        return $this->render('BackOfficeBundle:User:user.html.twig', array('user' => $user));
     }
-    
-    public function addAction(){
-        return $this->render('BackOfficeBundle:User:add.html.twig');
+
+    public function createAction(Request $request) {
+        $newUser = new User();
+
+        $form = $this->createForm(UserType::class, $newUser)->add('create', SubmitType::class);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $newUser = $form->getData();
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($newUser);
+            $em->flush();
+
+            return $this->redirectToRoute('back_office_user_list');
+        }
+
+        return $this->render('BackOfficeBundle:User:create.html.twig', array('form' => $form->createView()));
     }
-    
-    public function modifyAction(){
-        return $this->render('BackOfficeBundle:User:modify.html.twig');
+
+    public function modifyAction($id, Request $request) {
+        $newUser = $this->getDoctrine()->getRepository(User::class)->find($id);
+
+        $form = $this->createForm(UserType::class, $newUser)
+                ->add('apply', SubmitType::class);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $newUser = $form->getData();
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($newUser);
+            $em->flush();
+
+            return $this->redirectToRoute('back_office_user_liste');
+        }
+
+        return $this->render('BackOfficeBundle:User:create.html.twig', array('form' => $form->createView()));
     }
-    
-    public function deleteAction(){
-        return $this->render('BackOfficeBundle:User:delete.html.twig');
+
+    public function deleteAction($id) {
+        $newUser = $this->getDoctrine()->getRepository(User::class)->find($id);
+
+        if (!$newUser) {
+            throw $this->createNotFoundException('No guest found');
+        }
+
+        $em = $this->getDoctrine()->getEntityManager();
+        $em->remove($newUser);
+        $em->flush();
+
+        return $this->redirectToRoute('back_office_user_liste');
     }
+
 }
