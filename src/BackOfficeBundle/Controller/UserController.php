@@ -59,7 +59,7 @@ class UserController extends Controller {
             $em->persist($newUser);
             $em->flush();
 
-            return $this->redirectToRoute('back_office_user_liste');
+            return $this->redirectToRoute('back_office_user_list');
         }
 
         return $this->render('BackOfficeBundle:User:create.html.twig', array('form' => $form->createView()));
@@ -76,7 +76,7 @@ class UserController extends Controller {
         $em->remove($newUser);
         $em->flush();
 
-        return $this->redirectToRoute('back_office_user_liste');
+        return $this->redirectToRoute('back_office_user_list');
     }
 
 }

@@ -15,7 +15,7 @@ back_office_user_add:
     defaults: { _controller: BackOfficeBundle:User:add }
     
 back_office_user_modify:
-    path:     /user/modify
+    path:     /user/modify/{id}
     defaults: { _controller: BackOfficeBundle:User:modify }
 
 back_office_user_delete:

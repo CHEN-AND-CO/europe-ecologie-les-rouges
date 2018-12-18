@@ -2,5 +2,14 @@
 
 {% block title %} Liste des utilisateurs {% endblock %}
 {% block content %}
-    <p> La liste des utilisateurs sera ici </p>
+    <h1> Liste des Utilisateurs </h1>
+    <ul id="params">
+        {% for user in users %}
+            <li>
+                <a href="{{ path('back_office_user_modify', {'id': user.getId()}) }}">  {{ user.getNom() }} {{ user.getPrenom() }} </a>
+            </li>
+            <br>
+        {% endfor %}
+    </ul>
+    <a class="button" id="btn-add" href="{{ path('back_office_user_create') }}">Ajouter</a>
 {% endblock %}
