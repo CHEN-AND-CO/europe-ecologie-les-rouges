@@ -1,0 +1,46 @@
+{% extends "@App/Templates/header_template.html.twig" %}
+
+{% block navbarmenus %}
+    <a class="navbar-brand" href="{{path('front_office_homepage')}}">
+        EER - Comptabilisez vos trajets écologiques<br>
+    </a>
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navcol-1">
+        <ul class="nav navbar-nav ml-auto">
+            {% if app.user %}
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" href="{{path('front_office_homepage')}}"> Acceuil </a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" href="{{path('front_office_travels')}}"> Mes déplacements </a>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">{{ app.user.username }}</a>
+                    <div class="dropdown-menu" role="menu">
+                        <a class="dropdown-item" role="presentation" href="{{path('front_office_profil')}}"> Mon profil </a>
+                        <div class="dropdown-divider" role="presentation"></div>
+                        <a class="dropdown-item" role="presentation" href="{{path('logout')}}"> Déconnexion </a>
+                    </div>
+                </li>
+            {% else %}
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" href="{{path('login')}}"> Se connecter </a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+{% endblock %}
+
+{% block devstuff %}
+    {% if app.user %}
+        <p>Username: {{ app.user.username }}</p>
+    {% endif %}
+
+    {% if app.debug %}
+        <p>Request method: {{ app.request.method }}</p>
+        <p>Application Environment: {{ app.environment }}</p>
+    {% endif %}
+{% endblock %}
