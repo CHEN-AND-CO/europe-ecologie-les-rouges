@@ -1,6 +1,15 @@
 {% extends "@BackOffice/template.html.twig" %}
 
-{% block title %} Liste des societées {% endblock %}
+{% block title %} Liste des Sociétés {% endblock %}
 {% block content %}
-    <p> La liste des societées sera ici </p>
+    <h1> Liste des Sociétés </h1>
+    <ul id="params">
+        {% for societe in societes %}
+            <li>
+                <a href="{{ path('back_office_user_show', {'id': societe.getId()}) }}">  {{ societe.getSociete() }} </a>
+            </li>
+            <br>
+        {% endfor %}
+    </ul>
+    <a class="button" id="btn-add" href="{{ path('back_office_societe_create') }}">Ajouter</a>
 {% endblock %}
