@@ -6,7 +6,7 @@
     <ul id="params">
         {% for societe in societes %}
             <li>
-                <a href="{{ path('back_office_user_show', {'id': societe.getId()}) }}">  {{ societe.getSociete() }} </a>
+                <a href="{{ path('back_office_societe_show', {'id': societe.getId()}) }}">  {{ societe.getSociete() }} </a>
             </li>
             <br>
         {% endfor %}

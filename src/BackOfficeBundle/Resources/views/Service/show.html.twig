@@ -1,0 +1,10 @@
+{% extends "@App/template.html.twig" %}
+
+{% block title %} Information d'un Service {% endblock %}
+{% block content %}
+    <h1> {{societe.getService()}} </h1>
+    
+    <a class="button" href="{{ path('back_office_service_delete', {'id': service.getId()})}}"> Delete </a>
+    <br>
+    <a class="button" href="{{ path('back_office_service_list') }}"> Retour </a>
+{% endblock %}

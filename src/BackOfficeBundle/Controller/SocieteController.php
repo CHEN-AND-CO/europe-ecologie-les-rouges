@@ -3,10 +3,14 @@
 namespace BackOfficeBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use BackOfficeBundle\Entity\Societe;
+use BackOfficeBundle\Form\SocieteType;
 
-class SocieteController extends Controller
-{
-     public function indexAction() {
+class SocieteController extends Controller {
+
+    public function indexAction() {
         $listeSociete = $this->getDoctrine()->getRepository(Societe::class)->findAll();
 
         return $this->render('BackOfficeBundle:Societe:index.html.twig', array('societes' => $listeSociete));
@@ -74,4 +78,5 @@ class SocieteController extends Controller
 
         return $this->redirectToRoute('back_office_societe_list');
     }
+
 }

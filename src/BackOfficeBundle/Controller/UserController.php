@@ -4,9 +4,9 @@ namespace BackOfficeBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use BackOfficeBundle\Entity\User;
 use BackOfficeBundle\Form\UserType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class UserController extends Controller {
 
@@ -78,5 +78,4 @@ class UserController extends Controller {
 
         return $this->redirectToRoute('back_office_user_list');
     }
-
 }
