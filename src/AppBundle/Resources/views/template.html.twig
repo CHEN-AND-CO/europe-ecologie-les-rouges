@@ -2,21 +2,21 @@
     <meta charset="UTF-8" />
     <title>{% block title %}{% endblock %} - EER</title>
     {% block link %}
-        {% include '@BackOffice/includes.html.twig' %}
+        {% include '@App/includes.html.twig' %}
     {% endblock %}
 
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 {% endblock %}
 
 {% block header_include %}
-    {% include '@BackOffice/header.html.twig' %}
+    {% include '@App/header.html.twig' %}
 {%endblock %}
 
 {% block content %}
 {% endblock %}
 
 {% block footer_include %}
-    {% include '@BackOffice/footer.html.twig' %}
+    {% include '@App/footer.html.twig' %}
 {%endblock %}
 
 {% block javascripts %}
