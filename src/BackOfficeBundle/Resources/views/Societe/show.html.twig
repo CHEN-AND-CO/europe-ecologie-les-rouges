@@ -5,7 +5,9 @@
     <h1> {{societe.getSociete()}} </h1>
     <h2> {{societe.getAdresse()}} </h2>
     <h2> {{societe.getVille()}} </h2>
-    
+
+    <a class="button" href="{{ path('back_office_societe_modify', {'id': societe.getId()})}}"> Modifier </a>
+    <br>
     <a class="button" href="{{ path('back_office_societe_delete', {'id': societe.getId()})}}"> Delete </a>
     <br>
     <a class="button" href="{{ path('back_office_societe_list') }}"> Retour </a>

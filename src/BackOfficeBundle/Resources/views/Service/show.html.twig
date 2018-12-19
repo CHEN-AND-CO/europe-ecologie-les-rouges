@@ -4,6 +4,8 @@
 {% block content %}
     <h1> {{societe.getService()}} </h1>
     
+    <a class="button" href="{{ path('back_office_service_modify', {'id': service.getId()})}}"> Modifier </a>
+    <br>
     <a class="button" href="{{ path('back_office_service_delete', {'id': service.getId()})}}"> Delete </a>
     <br>
     <a class="button" href="{{ path('back_office_service_list') }}"> Retour </a>
