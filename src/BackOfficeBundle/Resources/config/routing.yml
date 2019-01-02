@@ -64,3 +64,25 @@ back_office_societe_modify:
 back_office_societe_delete:
     path:     /societe/delete/{id}
     defaults: { _controller: BackOfficeBundle:Societe:delete }
+    
+    
+
+back_office_deplacement_list:
+    path:     /deplacement
+    defaults: { _controller: BackOfficeBundle:Deplacement:index }
+
+back_office_deplacement_create:
+    path:     /deplacement/create
+    defaults: { _controller: BackOfficeBundle:Deplacement:create }
+
+back_office_deplacement_show:
+    path:     /deplacement/show/{id}
+    defaults: { _controller: BackOfficeBundle:Deplacement:show }
+    
+back_office_deplacement_modify:
+    path:     /deplacement/modify/{id}
+    defaults: { _controller: BackOfficeBundle:Deplacement:modify }
+
+back_office_deplacement_delete:
+    path:     /deplacement/delete/{id}
+    defaults: { _controller: BackOfficeBundle:Deplacement:delete }

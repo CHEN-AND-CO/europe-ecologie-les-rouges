@@ -354,4 +354,13 @@ class User
     {
         return $this->ville;
     }
+    
+    /**
+     * Convert to string
+     * 
+     * @return string
+     */
+    public function __toString() {
+        return $this->getNom().' '.$this->getPrenom();
+    }
 }

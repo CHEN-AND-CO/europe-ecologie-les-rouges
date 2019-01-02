@@ -1,0 +1,16 @@
+{% extends "@App/template.html.twig" %}
+
+{% block title %} Informations d'un déplacement {% endblock %}
+{% block content %}
+    <h1> {{ deplacement.getId() }} </h1>
+    <h2> {{ deplacement.getUser() }}</h2> 
+    <h2>{{ deplacement.getValidation() }}</h2>
+    <h2> {{ deplacement.getMois() }}</h2>
+    <h2>{{ deplacement.getAnnee() }} </h2>
+
+    <a class="button" href="{{ path('back_office_deplacement_modify', {'id': deplacement.getId()})}}"> Modifier </a>
+    <br>
+    <a class="button" href="{{ path('back_office_deplacement_delete', {'id': deplacement.getId()})}}"> Delete </a>
+    <br>
+    <a class="button" href="{{ path('back_office_deplacement_list') }}"> Retour </a>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "@App/template.html.twig" %}
+
+{% block title %} Liste des déplacements {% endblock %}
+{% block content %}
+    <h1> Liste des Déplacements </h1>
+    <ul id="params">
+        {% for deplacement in deplacements %}
+            <li>
+                <a href="{{ path('back_office_deplacement_show', {'id': deplacement.getId()}) }}">  {{ deplacement.getUser() }} {{ deplacement.getValidation() }} {{ deplacement.getMois() }} {{ deplacement.getAnnee() }} </a>
+            </li>
+            <br>
+        {% endfor %}
+    </ul>
+    <a class="button" id="btn-add" href="{{ path('back_office_deplacement_create') }}">Ajouter</a>
+{% endblock %}
