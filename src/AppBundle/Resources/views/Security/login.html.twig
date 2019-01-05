@@ -1,26 +1,37 @@
 {% extends "@App/template.html.twig" %}
 
 {% block title %} Connexion {% endblock %}
+
 {% block content %}
-    <h1>Welcome to the Security:login page</h1>
+    <link rel="stylesheet" href="{{ asset('css/custom/login-form.css') }}" />
 
-    {% if error %}
-        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+    <div class="container">
+        <h1 style="text-align: center;">Bonjour !</h1>
+        <h2 style="text-align: center;">Connectez-vous</h2>
 
-    <form action="{{ path('login') }}" method="post">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="_username" value="{{ last_username }}" />
+        {% if error %}
+            <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="_password" />
-
-        {#
-            If you want to control the URL the user
-            is redirected to on success (more details below)
-            <input type="hidden" name="_target_path" value="/account" />
-        #}
-
-        <button type="submit">login</button>
-    </form>
+        <div class="login-card">
+            <img src="{{asset('img/avatar.png')}}" class="avatar-img-card">
+            <form class="form-signin" action="{{ path('login')}}" method="post">
+                <input class="form-control" type="text" required="" placeholder="Nom d'utilisateur" autofocus="" id="username" name="_username">
+                <input class="form-control" type="password" required="" placeholder="Mot de passe" id="password" name="_password">
+                <div class="checkbox">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="formCheck-1">
+                        <label class="form-check-label" for="formCheck-1">Se souvenir de moi</label>
+                    </div>
+                </div>
+                <button class="btn btn-primary btn-block btn-lg btn-signin" type="submit">Connexion</button>
+                {#
+                    If you want to control the URL the user
+                    is redirected to on success (more details below)
+                    <input type="hidden" name="_target_path" value="/account" />
+                #}
+            </form>
+            <a href="#" class="forgot-password">Mot de passe oublié</a>
+        </div>
+    </div>
 {% endblock %}
