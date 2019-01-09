@@ -1,0 +1,62 @@
+{% extends "@App/template.html.twig" %}
+
+{% block title %} Mes déplacements {% endblock %}
+{% block content %}
+   <div class="container">
+        <h1>Mes déplacements</h1>
+        <h2>Déplacements à valider</h2>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Numéro</th>
+                        <th>Date</th>
+                        <th>Nombre de km</th>
+                        <th>Moyen de locomotion</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in 0..3 %}
+                        <tr>
+                            <td>5</td>
+                            <td>05/01/2018</td>
+                            <td>15.6</td>
+                            <td>Vélo</td>
+                            <td>
+                                <div class="btn-group" role="group">
+                                    <a class="btn btn-success" href="{{path('front_office_travel_edit', { 'id': i })}}" role="button">Modifier</a>
+                                    <a class="btn btn-danger" href="{{path('front_office_travel_delete', { 'id': i })}}" role="button">Supprimer</a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <a class="btn btn-primary" href="{{path('front_office_travel_create')}}" role="button">Ajouter un déplacement</a>
+        <h2>Déplacements validés</h2>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Numéro</th>
+                        <th>Date</th>
+                        <th>Nombre de km</th>
+                        <th>Moyen de locomotion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in 0..6 %}
+                        <tr>
+                        <td>1</td>
+                        <td>03/01/2018</td>
+                        <td>15.6</td>
+                        <td>Vélo</td>
+                    </tr>
+                    {% endfor %}                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

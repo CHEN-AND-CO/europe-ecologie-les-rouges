@@ -5,8 +5,20 @@ front_office_homepage:
 
 front_office_travels:
     path:     /mes_deplacements
-    defaults: { _controller: FrontOfficeBundle:Default:travels }
+    defaults: { _controller: FrontOfficeBundle:Travel:index }
 
 front_office_profil:
     path:     /mon_profil
     defaults: { _controller: FrontOfficeBundle:Default:profil }
+
+front_office_travel_create:
+    path:     /mes_deplacements/nouveau
+    defaults: { _controller: FrontOfficeBundle:Travel:create }
+
+front_office_travel_edit:
+    path:     /mes_deplacements/editer/{id}
+    defaults: { _controller: FrontOfficeBundle:Travel:edit }
+
+front_office_travel_delete:
+    path:     /mes_deplacements/supprimer/{id}
+    defaults: { _controller: FrontOfficeBundle:Travel:delete }

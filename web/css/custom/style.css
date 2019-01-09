@@ -24,3 +24,14 @@ body {
   display:none;
 }
 
+td > div.btn-group {
+  float: right;
+}
+
+table.table.table-striped > tbody > tr > td {
+  vertical-align: middle;
+}
+
+table{
+  text-align: center;
+}
