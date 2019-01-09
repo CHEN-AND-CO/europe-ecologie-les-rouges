@@ -2,80 +2,123 @@
 
 namespace BackOfficeBundle\Controller;
 
+use BackOfficeBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use BackOfficeBundle\Entity\User;
-use BackOfficeBundle\Form\UserType;
 
-class UserController extends Controller {
+/**
+ * User controller.
+ *
+ */
+class UserController extends Controller
+{
+    /**
+     * Lists all user entities.
+     *
+     */
+    public function indexAction()
+    {
+        $em = $this->getDoctrine()->getManager();
 
-    public function indexAction() {
-        $listeUser = $this->getDoctrine()->getRepository(User::class)->findAll();
+        $users = $em->getRepository('BackOfficeBundle:User')->findAll();
 
-        return $this->render('BackOfficeBundle:User:index.html.twig', array('users' => $listeUser));
+        return $this->render('user/index.html.twig', array(
+            'users' => $users,
+        ));
     }
 
-    public function showAction($id) {
-        $user = $this->getDoctrine()->getRepository(User::class)->find($id);
-
-        return $this->render('BackOfficeBundle:User:show.html.twig', array('user' => $user));
-    }
-
-    public function createAction(Request $request) {
-        $newUser = new User();
-
-        $form = $this->createForm(UserType::class, $newUser)->add('create', SubmitType::class);
-
+    /**
+     * Creates a new user entity.
+     *
+     */
+    public function newAction(Request $request)
+    {
+        $user = new User();
+        $form = $this->createForm('BackOfficeBundle\Form\UserType', $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
-            $newUser = $form->getData();
-
             $em = $this->getDoctrine()->getManager();
-            $em->persist($newUser);
-            $em->flush();
+            $em->persist($user);
+            $em->flush($user);
 
-            return $this->redirectToRoute('back_office_user_list');
+            return $this->redirectToRoute('user_show', array('id' => $user->getId()));
         }
 
-        return $this->render('BackOfficeBundle:User:create.html.twig', array('form' => $form->createView()));
+        return $this->render('user/new.html.twig', array(
+            'user' => $user,
+            'form' => $form->createView(),
+        ));
     }
 
-    public function modifyAction($id, Request $request) {
-        $newUser = $this->getDoctrine()->getRepository(User::class)->find($id);
+    /**
+     * Finds and displays a user entity.
+     *
+     */
+    public function showAction(User $user)
+    {
+        $deleteForm = $this->createDeleteForm($user);
 
-        $form = $this->createForm(UserType::class, $newUser)
-                ->add('apply', SubmitType::class);
+        return $this->render('user/show.html.twig', array(
+            'user' => $user,
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
 
+    /**
+     * Displays a form to edit an existing user entity.
+     *
+     */
+    public function editAction(Request $request, User $user)
+    {
+        $deleteForm = $this->createDeleteForm($user);
+        $editForm = $this->createForm('BackOfficeBundle\Form\UserType', $user);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('user_edit', array('id' => $user->getId()));
+        }
+
+        return $this->render('user/edit.html.twig', array(
+            'user' => $user,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+    /**
+     * Deletes a user entity.
+     *
+     */
+    public function deleteAction(Request $request, User $user)
+    {
+        $form = $this->createDeleteForm($user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
-            $newUser = $form->getData();
-
             $em = $this->getDoctrine()->getManager();
-            $em->persist($newUser);
-            $em->flush();
-
-            return $this->redirectToRoute('back_office_user_list');
+            $em->remove($user);
+            $em->flush($user);
         }
 
-        return $this->render('BackOfficeBundle:User:create.html.twig', array('form' => $form->createView()));
+        return $this->redirectToRoute('user_index');
     }
 
-    public function deleteAction($id) {
-        $newUser = $this->getDoctrine()->getRepository(User::class)->find($id);
-
-        if (!$newUser) {
-            throw $this->createNotFoundException('No guest found');
-        }
-
-        $em = $this->getDoctrine()->getEntityManager();
-        $em->remove($newUser);
-        $em->flush();
-
-        return $this->redirectToRoute('back_office_user_list');
+    /**
+     * Creates a form to delete a user entity.
+     *
+     * @param User $user The user entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createDeleteForm(User $user)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('user_delete', array('id' => $user->getId())))
+            ->setMethod('DELETE')
+            ->getForm()
+        ;
     }
 }
