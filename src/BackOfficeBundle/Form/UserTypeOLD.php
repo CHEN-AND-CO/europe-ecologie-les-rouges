@@ -6,14 +6,14 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class VilleType extends AbstractType
+class UserType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('ville')->add('cp')        ;
+        $builder->add('nom')->add('prenom')->add('adresse')->add('distanceInit')->add('created')->add('updated')->add('service')->add('societe')->add('typeUser')->add('ville')        ;
     }
     
     /**
@@ -22,7 +22,7 @@ class VilleType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'BackOfficeBundle\Entity\Ville'
+            'data_class' => 'BackOfficeBundle\Entity\User'
         ));
     }
 
@@ -31,7 +31,7 @@ class VilleType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'backofficebundle_ville';
+        return 'backofficebundle_user';
     }
 
 

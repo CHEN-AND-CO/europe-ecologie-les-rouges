@@ -1,27 +1,31 @@
+back_office_admindep_user:
+    resource: "@BackOfficeBundle/Resources/config/routing/user.yml"
+    prefix:   /admindep/user
+
 back_office_homepage:
     path:     /
     defaults: { _controller: BackOfficeBundle:Default:index }
 
 
-back_office_user_list:
-    path:     /user
-    defaults: { _controller: BackOfficeBundle:User:index }
+#back_office_user_list:
+#    path:     /user
+#    defaults: { _controller: BackOfficeBundle:User:index }
 
-back_office_user_show:
-    path:     /user/show/{id}
-    defaults: { _controller: BackOfficeBundle:User:show }
+#back_office_user_show:
+#    path:     /user/show/{id}
+#    defaults: { _controller: BackOfficeBundle:User:show }
 
-back_office_user_create:
-    path:     /user/create
-    defaults: { _controller: BackOfficeBundle:User:create }
+#back_office_user_create:
+#    path:     /user/create
+#    defaults: { _controller: BackOfficeBundle:User:create }
     
-back_office_user_modify:
-    path:     /user/modify/{id}
-    defaults: { _controller: BackOfficeBundle:User:modify }
+#back_office_user_modify:
+#    path:     /user/modify/{id}
+#    defaults: { _controller: BackOfficeBundle:User:modify }
 
-back_office_user_delete:
-    path:     /user/delete/{id}
-    defaults: { _controller: BackOfficeBundle:User:delete }
+#back_office_user_delete:
+#    path:     /user/delete/{id}
+#    defaults: { _controller: BackOfficeBundle:User:delete }
     
 
 back_office_service_list:
