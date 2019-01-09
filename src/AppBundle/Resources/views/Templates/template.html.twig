@@ -11,13 +11,14 @@
         {% block header_include %}
             {% include '@BackOffice/Templates/header_template.html.twig' %}
         {% endblock %}
-        
-        <div id="content">
-            {% block content %}
 
+        <div id="content">
+            {% block body %}
+                {% block content %}    
+                {% endblock %}
             {% endblock %}
         </div>
-        
+
         {% block footer_include %}
             {% include '@BackOffice/Templates/footer_template.html.twig' %}
         {% endblock %}

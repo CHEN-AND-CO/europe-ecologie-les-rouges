@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="user", indexes={@ORM\Index(name="fk_user_type_user_idx", columns={"type_user_id"}), @ORM\Index(name="fk_user_societe1_idx", columns={"societe_id"}), @ORM\Index(name="fk_user_service1_idx", columns={"service_id"}), @ORM\Index(name="fk_user_ville1_idx", columns={"ville_id"})})
  * @ORM\Entity
  */
-class User
-{
+class User {
+
     /**
      * @var integer
      *
@@ -103,15 +103,12 @@ class User
      */
     private $ville;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -122,10 +119,9 @@ class User
      *
      * @return User
      */
-    public function setNom($nom)
-    {
+    public function setNom($nom) {
         $this->nom = $nom;
-    
+
         return $this;
     }
 
@@ -134,8 +130,7 @@ class User
      *
      * @return string
      */
-    public function getNom()
-    {
+    public function getNom() {
         return $this->nom;
     }
 
@@ -146,10 +141,9 @@ class User
      *
      * @return User
      */
-    public function setPrenom($prenom)
-    {
+    public function setPrenom($prenom) {
         $this->prenom = $prenom;
-    
+
         return $this;
     }
 
@@ -158,8 +152,7 @@ class User
      *
      * @return string
      */
-    public function getPrenom()
-    {
+    public function getPrenom() {
         return $this->prenom;
     }
 
@@ -170,10 +163,9 @@ class User
      *
      * @return User
      */
-    public function setAdresse($adresse)
-    {
+    public function setAdresse($adresse) {
         $this->adresse = $adresse;
-    
+
         return $this;
     }
 
@@ -182,8 +174,7 @@ class User
      *
      * @return string
      */
-    public function getAdresse()
-    {
+    public function getAdresse() {
         return $this->adresse;
     }
 
@@ -194,10 +185,9 @@ class User
      *
      * @return User
      */
-    public function setDistanceInit($distanceInit)
-    {
+    public function setDistanceInit($distanceInit) {
         $this->distanceInit = $distanceInit;
-    
+
         return $this;
     }
 
@@ -206,8 +196,7 @@ class User
      *
      * @return float
      */
-    public function getDistanceInit()
-    {
+    public function getDistanceInit() {
         return $this->distanceInit;
     }
 
@@ -218,10 +207,9 @@ class User
      *
      * @return User
      */
-    public function setCreated($created)
-    {
+    public function setCreated($created) {
         $this->created = $created;
-    
+
         return $this;
     }
 
@@ -230,8 +218,7 @@ class User
      *
      * @return \DateTime
      */
-    public function getCreated()
-    {
+    public function getCreated() {
         return $this->created;
     }
 
@@ -242,10 +229,9 @@ class User
      *
      * @return User
      */
-    public function setUpdated($updated)
-    {
+    public function setUpdated($updated) {
         $this->updated = $updated;
-    
+
         return $this;
     }
 
@@ -254,8 +240,7 @@ class User
      *
      * @return \DateTime
      */
-    public function getUpdated()
-    {
+    public function getUpdated() {
         return $this->updated;
     }
 
@@ -266,10 +251,9 @@ class User
      *
      * @return User
      */
-    public function setService(\BackOfficeBundle\Entity\Service $service = null)
-    {
+    public function setService(\BackOfficeBundle\Entity\Service $service = null) {
         $this->service = $service;
-    
+
         return $this;
     }
 
@@ -278,8 +262,7 @@ class User
      *
      * @return \BackOfficeBundle\Entity\Service
      */
-    public function getService()
-    {
+    public function getService() {
         return $this->service;
     }
 
@@ -290,10 +273,9 @@ class User
      *
      * @return User
      */
-    public function setSociete(\BackOfficeBundle\Entity\Societe $societe = null)
-    {
+    public function setSociete(\BackOfficeBundle\Entity\Societe $societe = null) {
         $this->societe = $societe;
-    
+
         return $this;
     }
 
@@ -302,8 +284,7 @@ class User
      *
      * @return \BackOfficeBundle\Entity\Societe
      */
-    public function getSociete()
-    {
+    public function getSociete() {
         return $this->societe;
     }
 
@@ -314,10 +295,9 @@ class User
      *
      * @return User
      */
-    public function setTypeUser(\BackOfficeBundle\Entity\TypeUser $typeUser = null)
-    {
+    public function setTypeUser(\BackOfficeBundle\Entity\TypeUser $typeUser = null) {
         $this->typeUser = $typeUser;
-    
+
         return $this;
     }
 
@@ -326,8 +306,7 @@ class User
      *
      * @return \BackOfficeBundle\Entity\TypeUser
      */
-    public function getTypeUser()
-    {
+    public function getTypeUser() {
         return $this->typeUser;
     }
 
@@ -338,10 +317,9 @@ class User
      *
      * @return User
      */
-    public function setVille(\BackOfficeBundle\Entity\Ville $ville = null)
-    {
+    public function setVille(\BackOfficeBundle\Entity\Ville $ville = null) {
         $this->ville = $ville;
-    
+
         return $this;
     }
 
@@ -350,17 +328,17 @@ class User
      *
      * @return \BackOfficeBundle\Entity\Ville
      */
-    public function getVille()
-    {
+    public function getVille() {
         return $this->ville;
     }
-    
+
     /**
      * Convert to string
      * 
      * @return string
      */
     public function __toString() {
-        return $this->getNom().' '.$this->getPrenom();
+        return $this->getNom() . ' ' . $this->getPrenom();
     }
+
 }

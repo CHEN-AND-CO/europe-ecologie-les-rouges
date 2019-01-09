@@ -1,92 +1,23 @@
-back_office_admindep_user:
-    resource: "@BackOfficeBundle/Resources/config/routing/user.yml"
-    prefix:   /admindep/user
-
 back_office_homepage:
     path:     /
     defaults: { _controller: BackOfficeBundle:Default:index }
 
-
-#back_office_user_list:
-#    path:     /user
-#    defaults: { _controller: BackOfficeBundle:User:index }
-
-#back_office_user_show:
-#    path:     /user/show/{id}
-#    defaults: { _controller: BackOfficeBundle:User:show }
-
-#back_office_user_create:
-#    path:     /user/create
-#    defaults: { _controller: BackOfficeBundle:User:create }
+back_office_stats:
+    path:     /stats
+    defaults: { _controller: BackOfficeBundle:Default:stats }
     
-#back_office_user_modify:
-#    path:     /user/modify/{id}
-#    defaults: { _controller: BackOfficeBundle:User:modify }
+back_office_user:
+    resource: "@BackOfficeBundle/Resources/config/routing/user.yml"
+    prefix:   /user
 
-#back_office_user_delete:
-#    path:     /user/delete/{id}
-#    defaults: { _controller: BackOfficeBundle:User:delete }
+back_office_societe:
+    resource: "@BackOfficeBundle/Resources/config/routing/societe.yml"
+    prefix:   /societe
     
+back_office_service:
+    resource: "@BackOfficeBundle/Resources/config/routing/service.yml"
+    prefix:   /service
 
-back_office_service_list:
-    path:     /service
-    defaults: { _controller: BackOfficeBundle:Service:index }
-
-back_office_service_create:
-    path:     /service/create
-    defaults: { _controller: BackOfficeBundle:Service:create }
-
-back_office_service_show:
-    path:     /service/show/{id}
-    defaults: { _controller: BackOfficeBundle:Service:show }
-    
-back_office_service_modify:
-    path:     /service/modify/{id}
-    defaults: { _controller: BackOfficeBundle:Service:modify }
-
-back_office_service_delete:
-    path:     /service/delete/{id}
-    defaults: { _controller: BackOfficeBundle:Service:delete }
-
-
-back_office_societe_list:
-    path:     /societe
-    defaults: { _controller: BackOfficeBundle:Societe:index }
-
-back_office_societe_create:
-    path:     /societe/create
-    defaults: { _controller: BackOfficeBundle:Societe:create }
-
-back_office_societe_show:
-    path:     /societe/show/{id}
-    defaults: { _controller: BackOfficeBundle:Societe:show }
-    
-back_office_societe_modify:
-    path:     /societe/modify/{id}
-    defaults: { _controller: BackOfficeBundle:Societe:modify }
-
-back_office_societe_delete:
-    path:     /societe/delete/{id}
-    defaults: { _controller: BackOfficeBundle:Societe:delete }
-    
-    
-
-back_office_deplacement_list:
-    path:     /deplacement
-    defaults: { _controller: BackOfficeBundle:Deplacement:index }
-
-back_office_deplacement_create:
-    path:     /deplacement/create
-    defaults: { _controller: BackOfficeBundle:Deplacement:create }
-
-back_office_deplacement_show:
-    path:     /deplacement/show/{id}
-    defaults: { _controller: BackOfficeBundle:Deplacement:show }
-    
-back_office_deplacement_modify:
-    path:     /deplacement/modify/{id}
-    defaults: { _controller: BackOfficeBundle:Deplacement:modify }
-
-back_office_deplacement_delete:
-    path:     /deplacement/delete/{id}
-    defaults: { _controller: BackOfficeBundle:Deplacement:delete }
+back_office_deplacement:
+    resource: "@BackOfficeBundle/Resources/config/routing/deplacement.yml"
+    prefix:   /deplacement

@@ -12,7 +12,9 @@
     {% include '@App/header.html.twig' %}
 {%endblock %}
 
-{% block content %}
+{% block body %}
+    {% block content %}
+    {% endblock %}
 {% endblock %}
 
 {% block footer_include %}
@@ -20,9 +22,7 @@
 {%endblock %}
 
 {% block javascripts %}
-
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+    <script src="{{asset('js/bootstrap.js')}}"></script>
 {% endblock %}
-
-<script src="https://code.jquery.com/jquery.min.js"></script>
-<script src="{{asset('js/bootstrap.js')}}"></script>
 

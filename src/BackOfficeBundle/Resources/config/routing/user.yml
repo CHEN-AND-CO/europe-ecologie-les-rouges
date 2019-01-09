@@ -1,24 +1,24 @@
-admindep_user_index:
+user_index:
     path:     /
     defaults: { _controller: "BackOfficeBundle:User:index" }
     methods:  GET
 
-admindep_user_show:
+user_show:
     path:     /{id}/show
     defaults: { _controller: "BackOfficeBundle:User:show" }
     methods:  GET
 
-admindep_user_new:
+user_new:
     path:     /new
     defaults: { _controller: "BackOfficeBundle:User:new" }
     methods:  [GET, POST]
 
-admindep_user_edit:
+user_edit:
     path:     /{id}/edit
     defaults: { _controller: "BackOfficeBundle:User:edit" }
     methods:  [GET, POST]
 
-admindep_user_delete:
+user_delete:
     path:     /{id}/delete
     defaults: { _controller: "BackOfficeBundle:User:delete" }
     methods:  DELETE

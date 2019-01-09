@@ -4,5 +4,12 @@
 
 {% block content %}
     <h2> Nombre d'utilisateurs par ville</h2>
+
+    <ul>
+        {% for ville in nbuserville %}
+            <li> {{ ville.ville }} : {{ ville.nb }} utilisateurs </li>
+        {%  endfor  %}
+    </ul>
+
     <p> Bienvenue sur la page des stats ! </p>
 {% endblock %}

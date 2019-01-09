@@ -42,7 +42,7 @@ class UserController extends Controller
             $em->persist($user);
             $em->flush($user);
 
-            return $this->redirectToRoute('admindep_user_show', array('id' => $user->getId()));
+            return $this->redirectToRoute('user_show', array('id' => $user->getId()));
         }
 
         return $this->render('user/new.html.twig', array(
@@ -78,7 +78,7 @@ class UserController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('admindep_user_edit', array('id' => $user->getId()));
+            return $this->redirectToRoute('user_edit', array('id' => $user->getId()));
         }
 
         return $this->render('user/edit.html.twig', array(
@@ -103,7 +103,7 @@ class UserController extends Controller
             $em->flush($user);
         }
 
-        return $this->redirectToRoute('admindep_user_index');
+        return $this->redirectToRoute('user_index');
     }
 
     /**
@@ -116,7 +116,7 @@ class UserController extends Controller
     private function createDeleteForm(User $user)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('admindep_user_delete', array('id' => $user->getId())))
+            ->setAction($this->generateUrl('user_delete', array('id' => $user->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

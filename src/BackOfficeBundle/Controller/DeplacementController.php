@@ -2,81 +2,123 @@
 
 namespace BackOfficeBundle\Controller;
 
+use BackOfficeBundle\Entity\Deplacement;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use BackOfficeBundle\Entity\Deplacement;
-use BackOfficeBundle\Form\DeplacementType;
 
-class DeplacementController extends Controller {
+/**
+ * Deplacement controller.
+ *
+ */
+class DeplacementController extends Controller
+{
+    /**
+     * Lists all deplacement entities.
+     *
+     */
+    public function indexAction()
+    {
+        $em = $this->getDoctrine()->getManager();
 
-    public function indexAction() {
-        $listeDeplacement = $this->getDoctrine()->getRepository(Deplacement::class)->findAll();
+        $deplacements = $em->getRepository('BackOfficeBundle:Deplacement')->findAll();
 
-        return $this->render('BackOfficeBundle:Deplacement:index.html.twig', array('deplacements' => $listeDeplacement));
+        return $this->render('deplacement/index.html.twig', array(
+            'deplacements' => $deplacements,
+        ));
     }
 
-    public function showAction($id) {
-        $deplacement = $this->getDoctrine()->getRepository(Deplacement::class)->find($id);
-
-        return $this->render('BackOfficeBundle:Deplacement:show.html.twig', array('deplacement' => $deplacement));
-    }
-
-    public function createAction(Request $request) {
-        $newDeplacement = new Deplacement();
-
-        $form = $this->createForm(SocieteType::class, $newDeplacement)->add('create', SubmitType::class);
-
+    /**
+     * Creates a new deplacement entity.
+     *
+     */
+    public function newAction(Request $request)
+    {
+        $deplacement = new Deplacement();
+        $form = $this->createForm('BackOfficeBundle\Form\DeplacementType', $deplacement);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
-            $newDeplacement = $form->getData();
-
             $em = $this->getDoctrine()->getManager();
-            $em->persist($newDeplacement);
-            $em->flush();
+            $em->persist($deplacement);
+            $em->flush($deplacement);
 
-            return $this->redirectToRoute('back_office_deplacement_list');
+            return $this->redirectToRoute('deplacement_show', array('id' => $deplacement->getId()));
         }
 
-        return $this->render('BackOfficeBundle:Deplacement:create.html.twig', array('form' => $form->createView()));
+        return $this->render('deplacement/new.html.twig', array(
+            'deplacement' => $deplacement,
+            'form' => $form->createView(),
+        ));
     }
 
-    public function modifyAction($id, Request $request) {
-        $newDeplacement = $this->getDoctrine()->getRepository(Deplacement::class)->find($id);
+    /**
+     * Finds and displays a deplacement entity.
+     *
+     */
+    public function showAction(Deplacement $deplacement)
+    {
+        $deleteForm = $this->createDeleteForm($deplacement);
 
-        $form = $this->createForm(DeplacementType::class, $newDeplacement)
-                ->add('apply', SubmitType::class);
+        return $this->render('deplacement/show.html.twig', array(
+            'deplacement' => $deplacement,
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
 
+    /**
+     * Displays a form to edit an existing deplacement entity.
+     *
+     */
+    public function editAction(Request $request, Deplacement $deplacement)
+    {
+        $deleteForm = $this->createDeleteForm($deplacement);
+        $editForm = $this->createForm('BackOfficeBundle\Form\DeplacementType', $deplacement);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('deplacement_edit', array('id' => $deplacement->getId()));
+        }
+
+        return $this->render('deplacement/edit.html.twig', array(
+            'deplacement' => $deplacement,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+    /**
+     * Deletes a deplacement entity.
+     *
+     */
+    public function deleteAction(Request $request, Deplacement $deplacement)
+    {
+        $form = $this->createDeleteForm($deplacement);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
-            $newDeplacement = $form->getData();
-
             $em = $this->getDoctrine()->getManager();
-            $em->persist($newDeplacement);
-            $em->flush();
-
-            return $this->redirectToRoute('back_office_deplacement_list');
+            $em->remove($deplacement);
+            $em->flush($deplacement);
         }
 
-        return $this->render('BackOfficeBundle:Deplacement:create.html.twig', array('form' => $form->createView()));
+        return $this->redirectToRoute('deplacement_index');
     }
 
-    public function deleteAction($id) {
-        $newDeplacement = $this->getDoctrine()->getRepository(Deplacement::class)->find($id);
-
-        if (!$newDeplacement) {
-            throw $this->createNotFoundException('No guest found');
-        }
-
-        $em = $this->getDoctrine()->getEntityManager();
-        $em->remove($newDeplacement);
-        $em->flush();
-
-        return $this->redirectToRoute('back_office_deplacement_list');
+    /**
+     * Creates a form to delete a deplacement entity.
+     *
+     * @param Deplacement $deplacement The deplacement entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createDeleteForm(Deplacement $deplacement)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('deplacement_delete', array('id' => $deplacement->getId())))
+            ->setMethod('DELETE')
+            ->getForm()
+        ;
     }
-
 }
