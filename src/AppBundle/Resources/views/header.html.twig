@@ -17,6 +17,12 @@
                 <li class="nav-item" role="presentation">
                     <a class="nav-link" href="{{path('front_office_travels')}}"> Mes déplacements </a>
                 </li>
+                {% if is_granted('ROLE_ADMIN') %}
+                     <li class="nav-item" role="presentation">
+                    <a class="nav-link" href="{{path('back_office_homepage')}}"> Administration </a>
+                </li>
+                {% endif %}
+
                 <li class="dropdown">
                     <a class="dropdown-toggle nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">{{ app.user.username }}</a>
                     <div class="dropdown-menu" role="menu">
