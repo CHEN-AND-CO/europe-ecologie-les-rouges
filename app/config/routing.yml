@@ -1,7 +1,3 @@
-rest:
-    resource: "@RestBundle/Resources/config/routing.yml"
-    prefix:   /api
-
 back_office:
     resource: "@BackOfficeBundle/Resources/config/routing.yml"
     prefix:   /admindep
@@ -9,6 +5,10 @@ back_office:
 front_office:
     resource: "@FrontOfficeBundle/Resources/config/routing.yml"
     prefix:   /
+
+rest:
+    resource: "@RestBundle/Resources/config/routing.yml"
+    prefix:   /api
 
 app:
     resource: "@AppBundle/Controller/"
