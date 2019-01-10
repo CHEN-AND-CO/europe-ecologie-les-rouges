@@ -1,0 +1,24 @@
+deplacementjour_index:
+    path:     /
+    defaults: { _controller: "BackOfficeBundle:DeplacementJour:index" }
+    methods:  GET
+
+deplacementjour_show:
+    path:     /{id}/show
+    defaults: { _controller: "BackOfficeBundle:DeplacementJour:show" }
+    methods:  GET
+
+deplacementjour_new:
+    path:     /new
+    defaults: { _controller: "BackOfficeBundle:DeplacementJour:new" }
+    methods:  [GET, POST]
+
+deplacementjour_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BackOfficeBundle:DeplacementJour:edit" }
+    methods:  [GET, POST]
+
+deplacementjour_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BackOfficeBundle:DeplacementJour:delete" }
+    methods:  DELETE

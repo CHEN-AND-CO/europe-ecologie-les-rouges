@@ -54,7 +54,7 @@ class DefaultController extends Controller {
                 . " BackOfficeBundle:DeplacementJour dJour,"
                 . " BackOfficeBundle:Societe societe,"
                 . " BackOfficeBundle:User user "
-                . "where deplacement.id=dJour.deplacement and deplacement.annee=".date("Y")." and deplacement.user=user.id and user.societe=societe.id "
+                . "where deplacement.id=dJour.deplacement and deplacement.annee=" . date("Y") . " and deplacement.user=user.id and user.societe=societe.id "
                 . "group by user.id"
         );
 

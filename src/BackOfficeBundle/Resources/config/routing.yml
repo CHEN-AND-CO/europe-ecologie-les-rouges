@@ -21,3 +21,7 @@ back_office_service:
 back_office_deplacement:
     resource: "@BackOfficeBundle/Resources/config/routing/deplacement.yml"
     prefix:   /deplacement
+    
+back_office_deplacementjour:
+    resource: "@BackOfficeBundle/Resources/config/routing/deplacementjour.yml"
+    prefix:   /deplacementjour
