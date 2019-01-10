@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Typedeplacement</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ typeDeplacement.id }}</td>
+            </tr>
+            <tr>
+                <th>Typedeplacement</th>
+                <td>{{ typeDeplacement.typeDeplacement }}</td>
+            </tr>
+            <tr>
+                <th>Montant</th>
+                <td>{{ typeDeplacement.montant }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{% if typeDeplacement.created %}{{ typeDeplacement.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updated</th>
+                <td>{% if typeDeplacement.updated %}{{ typeDeplacement.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('typedeplacement_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('typedeplacement_edit', { 'id': typeDeplacement.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

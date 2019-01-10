@@ -1,0 +1,24 @@
+typeuser_index:
+    path:     /
+    defaults: { _controller: "BackOfficeBundle:TypeUser:index" }
+    methods:  GET
+
+typeuser_show:
+    path:     /{id}/show
+    defaults: { _controller: "BackOfficeBundle:TypeUser:show" }
+    methods:  GET
+
+typeuser_new:
+    path:     /new
+    defaults: { _controller: "BackOfficeBundle:TypeUser:new" }
+    methods:  [GET, POST]
+
+typeuser_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BackOfficeBundle:TypeUser:edit" }
+    methods:  [GET, POST]
+
+typeuser_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BackOfficeBundle:TypeUser:delete" }
+    methods:  DELETE

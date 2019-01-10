@@ -1,0 +1,24 @@
+typedeplacement_index:
+    path:     /
+    defaults: { _controller: "BackOfficeBundle:TypeDeplacement:index" }
+    methods:  GET
+
+typedeplacement_show:
+    path:     /{id}/show
+    defaults: { _controller: "BackOfficeBundle:TypeDeplacement:show" }
+    methods:  GET
+
+typedeplacement_new:
+    path:     /new
+    defaults: { _controller: "BackOfficeBundle:TypeDeplacement:new" }
+    methods:  [GET, POST]
+
+typedeplacement_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BackOfficeBundle:TypeDeplacement:edit" }
+    methods:  [GET, POST]
+
+typedeplacement_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BackOfficeBundle:TypeDeplacement:delete" }
+    methods:  DELETE

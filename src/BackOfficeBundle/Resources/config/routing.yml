@@ -25,3 +25,15 @@ back_office_deplacement:
 back_office_deplacementjour:
     resource: "@BackOfficeBundle/Resources/config/routing/deplacementjour.yml"
     prefix:   /deplacementjour
+    
+back_office_ville:
+    resource: "@BackOfficeBundle/Resources/config/routing/ville.yml"
+    prefix:   /ville
+    
+back_office_typeuser:
+    resource: "@BackOfficeBundle/Resources/config/routing/typeuser.yml"
+    prefix:   /typeuser
+
+back_office_typedeplacement:
+    resource: "@BackOfficeBundle/Resources/config/routing/typedeplacement.yml"
+    prefix:   /typedeplacement
