@@ -17,16 +17,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for i in 0..3 %}
+                    {% for travel in travels %}
                         <tr>
-                            <td>5</td>
-                            <td>05/01/2018</td>
+                            <td>{{ travel.id }}</td>
+                            <td>05/01/{{travel.annee}}</td>
                             <td>15.6</td>
                             <td>Vélo</td>
                             <td>
                                 <div class="btn-group" role="group">
-                                    <a class="btn btn-success" href="{{path('front_office_travel_edit', { 'id': i })}}" role="button">Modifier</a>
-                                    <a class="btn btn-danger" href="{{path('front_office_travel_delete', { 'id': i })}}" role="button">Supprimer</a>
+                                    <a class="btn btn-success" href="{{path('front_office_travel_edit', { 'id': travel.id })}}" role="button">Modifier</a>
+                                    <a class="btn btn-danger" href="{{path('front_office_travel_delete', { 'id': travel.id })}}" role="button">Supprimer</a>
                                 </div>
                             </td>
                         </tr>
