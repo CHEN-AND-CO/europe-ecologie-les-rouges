@@ -1,0 +1,7 @@
+rest_homepage:
+    path:     /
+    defaults: { _controller: RestBundle:Default:index }
+    
+rest_deplacement_list:
+    path:     /deplacement/list
+    defaults: { _controller: RestBundle:Deplacement:index }
