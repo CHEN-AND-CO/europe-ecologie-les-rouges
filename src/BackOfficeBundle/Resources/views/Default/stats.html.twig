@@ -3,13 +3,45 @@
 {% block title %} Accueil Statistiques {% endblock %}
 
 {% block content %}
-    <h2> Nombre d'utilisateurs par ville</h2>
+    <div class="container">
+        <h2> Nombre d'utilisateurs par villes</h2>
 
-    <ul>
-        {% for ville in nbuserville %}
-            <li> {{ ville.ville }} : {{ ville.nb }} utilisateurs </li>
-        {%  endfor  %}
-    </ul>
+        <ul>
+            {% for ville in nbuserville %}
+                <li> {{ ville.ville }} : {{ ville.nb_user }} utilisateurs </li>
+                {% endfor %}
+        </ul>
 
-    <p> Bienvenue sur la page des stats ! </p>
+        <h2> Nombre d'utilisateurs par societés </h2>
+
+        <ul>
+            {% for societe in nbusersociete %}
+                <li> 
+                    {{ societe.societe }} : {{ societe.nb_user }} utilisateurs 
+                </li>
+            {%  endfor  %}
+        </ul>
+
+        <h2> Nombre de km par societés </h2>
+
+        <ul>
+            {% for deplacement in nbkmsociete %}
+                <li>
+                    {{ deplacement.societe_name }} : {{ deplacement.nb_km }} km  
+                </li>
+            {% endfor %}
+        </ul>
+
+        <h2> Utilisateurs </h2>
+
+        <ul>
+            {% for user in nbkmuser %}
+                <li>
+                    ( {{ user.societe_name }} ) {{ user.user_name }} : {{ user.nb_km }} km  
+                </li>
+            {% endfor %}
+        </ul>
+
+        <p> Bienvenue sur la page des stats ! </p>
+    </div>
 {% endblock %}
