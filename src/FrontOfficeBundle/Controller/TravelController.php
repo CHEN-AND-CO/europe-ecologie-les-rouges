@@ -10,14 +10,17 @@ class TravelController extends Controller
     public function indexAction()
     {
         $entityManager = $this->getDoctrine()->getManager();
-        $query = $entityManager->createQuery(
-                "select deplacementjour.id, deplacementjour.jour,deplacement.mois, deplacement.annee, deplacementjour.nbKm, typedeplacement.typeDeplacement from BackOfficeBundle:DeplacementJour deplacementjour join BackOfficeBundle:deplacement deplacement on deplacementjour.deplacement=deplacement.id join BackOfficeBundle:TypeDeplacement typedeplacement on deplacementjour.typeDeplacement=typedeplacement.id"
+        $query1 = $entityManager->createQuery(
+                "select deplacementjour.id, deplacementjour.jour,deplacement.mois, deplacement.annee, deplacementjour.nbKm, typedeplacement.typeDeplacement from BackOfficeBundle:DeplacementJour deplacementjour join BackOfficeBundle:deplacement deplacement with deplacementjour.deplacement=deplacement.id join BackOfficeBundle:TypeDeplacement typedeplacement with deplacementjour.typeDeplacement=typedeplacement.id where deplacement.user=2 and deplacement.validation IS NULL"
         );
 
-        //$travels = $this->getDoctrine()->getRepository("BackOfficeBundle:Deplacement")->findAll();
+        $query2 = $entityManager->createQuery(
+            "select deplacementjour.id, deplacementjour.jour,deplacement.mois, deplacement.annee, deplacementjour.nbKm, typedeplacement.typeDeplacement from BackOfficeBundle:DeplacementJour deplacementjour join BackOfficeBundle:deplacement deplacement with deplacementjour.deplacement=deplacement.id join BackOfficeBundle:TypeDeplacement typedeplacement with deplacementjour.typeDeplacement=typedeplacement.id where deplacement.user=2 and deplacement.validation IS NOT NULL"
+    );
 
         return $this->render('FrontOfficeBundle:Travel:list.html.twig', array(
-            'travels' => $query->getResult()
+            'pending_travels' => $query1->getResult(),
+            'validated_travels' => $query2->getResult()
         ));
     }
 

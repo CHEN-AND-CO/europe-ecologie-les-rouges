@@ -2,5 +2,22 @@
 
 {% block title %} Nouveau déplacement {% endblock %}
 {% block content %}
-    <h1>Welcome to the Travel:create page</h1>
+    <div class="container">
+        <h1>Création de déplacement</h1>
+        <form action="{{path('front_office_travels')}}" method="get">
+            <div class="form-group">
+                <label>Nombre de km:</label>
+                <input class="form-control" type="text" value="" required="" minlength="1" pattern="w+" autofocus="">
+            <div class="form-group">
+                <label>Date</label>
+                <input class="form-control" type="date" value="" required="" minlength="" pattern=""></div>
+            <div class="form-group">
+                <label>Moyen de locomotion</label>
+                <input class="form-control" type="text" value="" required="" inputmode="">           
+            <div>
+                <button class="btn btn-primary" type="button">Ajouter</button>
+            </div>
+        </form>
+    </div>
+
 {% endblock %}

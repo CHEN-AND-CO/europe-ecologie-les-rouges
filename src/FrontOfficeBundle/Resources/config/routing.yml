@@ -22,3 +22,4 @@ front_office_travel_edit:
 front_office_travel_delete:
     path:     /mes_deplacements/supprimer/{id}
     defaults: { _controller: FrontOfficeBundle:Travel:delete }
+

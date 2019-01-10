@@ -17,16 +17,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for travel in travels %}
+                    {% for pending_travel in pending_travels %}
                         <tr>
-                            <td>{{ travel.id }}</td>
-                            <td>05/01/{{travel.annee}}</td>
-                            <td>15.6</td>
-                            <td>Vélo</td>
+                            <td> {{ pending_travel.id }} </td>
+                            <td> {{ "%02d"|format(pending_travel.jour) }}/{{ "%02d"|format(pending_travel.mois) }}/{{pending_travel.annee}} </td>
+                            <td> {{pending_travel.nbKm}} </td>
+                            <td> {{pending_travel.typeDeplacement}} </td>
                             <td>
                                 <div class="btn-group" role="group">
-                                    <a class="btn btn-success" href="{{path('front_office_travel_edit', { 'id': travel.id })}}" role="button">Modifier</a>
-                                    <a class="btn btn-danger" href="{{path('front_office_travel_delete', { 'id': travel.id })}}" role="button">Supprimer</a>
+                                    <a class="btn btn-success" href="{{path('front_office_travel_edit', { 'id': pending_travel.id })}}" role="button">Modifier</a>
+                                    <a class="btn btn-danger" href="{{path('front_office_travel_delete', { 'id': pending_travel.id })}}" role="button">Supprimer</a>
                                 </div>
                             </td>
                         </tr>
@@ -47,12 +47,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for i in 0..6 %}
+                    {% for validated_travel in validated_travels %}
                         <tr>
-                        <td>1</td>
-                        <td>03/01/2018</td>
-                        <td>15.6</td>
-                        <td>Vélo</td>
+                        <td> {{validated_travel.id }} </td>
+                        <td> {{"%02d"|format(validated_travel.jour) }}/{{ "%02d"|format(validated_travel.mois) }}/{{validated_travel.annee}} </td>
+                        <td> {{validated_travel.nbKm}} </td>
+                        <td> {{validated_travel.typeDeplacement}} </td>
                     </tr>
                     {% endfor %}                    
                 </tbody>
