@@ -13,7 +13,11 @@
             </div>
             <div class="form-group">
                 <label>Moyen de locomotion</label>
-                <input name="typedeplacement" class="form-control" type="text" value="{{ deplacement.typeDeplacement.id }}" required="" inputmode="">           
+                <select class="form-control" name="typedeplacement" value="{{  deplacement.typeDeplacement.id }}">
+                    {% for moyen in moyens %}
+                        <option value="{{ moyen.id }}">{{ moyen.typeDeplacement }}</option>
+                    {%  endfor  %}
+                </select>         
                 <div>
                     <button name="submit" value="true" class="btn btn-primary">Modifier</button>
                 </div>
