@@ -44,15 +44,10 @@ class TravelController extends Controller {
             return $this->render('FrontOfficeBundle:Travel:create.html.twig');
         }
 
-
         $datein = $request->get('datec');
         $annee = date_parse($datein)['year'];
         $mois = date_parse($datein)['month'];
         $jour = date_parse($datein)['day'];
-        //$annee = DateTime::createFromFormat("Y", $datein);
-        //$mois = DateTime::createFromFormat("m", $datein);
-        //$annee = date("Y", strtotime($datein));
-        //$mois = date("m", strtotime($datein));
 
         $deplacement = $this->SQLRequest(
                 "select deplacement"
@@ -103,10 +98,60 @@ class TravelController extends Controller {
         return $this->redirectToRoute('front_office_travels');
     }
 
-    public function editAction($id) {
-        return $this->render('FrontOfficeBundle:Travel:edit.html.twig', array(
-                        // ...
-        ));
+    public function editAction(Request $request, $id) {
+        $deplacementjour = $this->findDeplacementJour($id);
+
+        if (!count($deplacementjour)) {
+            return $this->redirectToRoute('front_office_travels');
+        }
+
+        if ($request->get('submit') == null) {
+            return $this->render('FrontOfficeBundle:Travel:edit.html.twig',
+                            array(
+                                'id' => $id,
+                                'deplacement' => $deplacementjour
+                            )
+            );
+        }
+
+        $datein = $request->get('datec');
+        $annee = date_parse($datein)['year'];
+        $mois = date_parse($datein)['month'];
+        $jour = date_parse($datein)['day'];
+
+        $deplacement = $deplacementjour->getDeplacement();
+
+        if ($deplacement == null) {
+            $deplacement = new Deplacement();
+            $deplacement->setAnnee($annee);
+            $deplacement->setMois($mois);
+
+            $user = $this->findUser($request->get('userid'));
+            if (count($user)) {
+                $deplacement->setUser($user[0]);
+            }
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($deplacement);
+            $em->flush();
+        } 
+
+        $dd = new DateTime($datein);
+
+        $deplacementjour->setDate($dd);
+        $deplacementjour->setNbKm($request->get('nbKm'));
+        $deplacementjour->setJour($jour);
+        $deplacementjour->setDeplacement($deplacement);
+        $typedeplacement = $this->findTypeDeplacement($request->get('typedeplacement'));
+        if (count($typedeplacement)) {
+            $deplacementjour->setTypeDeplacement($typedeplacement[0]);
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($deplacementjour);
+        $em->flush();
+
+        return $this->redirectToRoute('front_office_travels');
     }
 
     public function deleteAction($id) {
@@ -118,6 +163,13 @@ class TravelController extends Controller {
         );
 
         return $this->redirectToRoute('front_office_travels');
+    }
+
+    public function findDeplacementJour($id) {
+        return $this->SQLRequest(
+                        "select deplacementJour from BackOfficeBundle:DeplacementJour deplacementJour where deplacementJour.id=:id",
+                        array('id' => $id)
+        );
     }
 
     public function findTypeDeplacement($id) {
