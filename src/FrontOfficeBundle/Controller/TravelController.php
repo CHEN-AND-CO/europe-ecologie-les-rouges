@@ -103,13 +103,22 @@ class TravelController extends Controller {
 
         if (!count($deplacementjour)) {
             return $this->redirectToRoute('front_office_travels');
+        } else {
+            $deplacementjour = $deplacementjour[0];
         }
 
         if ($request->get('submit') == null) {
+            $datein = new DateTime();
+            $datein->setDate(
+                    $deplacementjour->getDeplacement()->getAnnee(),
+                    $deplacementjour->getDeplacement()->getMois(),
+                    $deplacementjour->getJour()
+            );
+
             return $this->render('FrontOfficeBundle:Travel:edit.html.twig',
                             array(
-                                'id' => $id,
-                                'deplacement' => $deplacementjour
+                                'deplacement' => $deplacementjour,
+                                'datecreat' => $datein
                             )
             );
         }
@@ -119,7 +128,18 @@ class TravelController extends Controller {
         $mois = date_parse($datein)['month'];
         $jour = date_parse($datein)['day'];
 
-        $deplacement = $deplacementjour->getDeplacement();
+        $deplacement = $this->SQLRequest(
+                "select deplacement"
+                . " from BackOfficeBundle:Deplacement deplacement"
+                . " where deplacement.user=:userid"
+                . " and deplacement.annee=:annee"
+                . " and deplacement.mois=:mois",
+                array(
+                    'userid' => $request->get('userid'),
+                    'annee' => $annee,
+                    'mois' => $mois
+                )
+        );
 
         if ($deplacement == null) {
             $deplacement = new Deplacement();
@@ -134,7 +154,24 @@ class TravelController extends Controller {
             $em = $this->getDoctrine()->getManager();
             $em->persist($deplacement);
             $em->flush();
-        } 
+        } else {
+            $deplacement = $deplacement[0];
+        }
+
+        if ($deplacement == null) {
+            $deplacement = new Deplacement();
+            $deplacement->setAnnee($annee);
+            $deplacement->setMois($mois);
+
+            $user = $this->findUser($request->get('userid'));
+            if (count($user)) {
+                $deplacement->setUser($user[0]);
+            }
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($deplacement);
+            $em->flush();
+        }
 
         $dd = new DateTime($datein);
 

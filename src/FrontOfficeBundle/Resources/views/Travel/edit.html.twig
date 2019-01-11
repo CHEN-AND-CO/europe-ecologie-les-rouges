@@ -9,7 +9,7 @@
             <input name="nbKm" class="form-control" type="number" value="{{ deplacement.nbKm }}" required="" minlength="1" pattern="w+" autofocus="">
             <div class="form-group">
                 <label>Date</label>
-                <input name="datec" class="form-control" type="date" value="{{ deplacement.date }}" required="" minlength="" pattern="">
+                <input name="datec" class="form-control" type="date" value="{{ datecreat | date("Y-m-d") }}" required="" minlength="" pattern="">
             </div>
             <div class="form-group">
                 <label>Moyen de locomotion</label>
