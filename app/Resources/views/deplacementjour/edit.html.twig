@@ -8,11 +8,11 @@
         <input type="submit" value="Edit" />
     {{ form_end(edit_form) }}
 
-    <ul>
-        <li>
+    <ul class="list-group">
+        <li class="list-group-item">
             <a href="{{ path('deplacementjour_index') }}">Back to the list</a>
         </li>
-        <li>
+        <li class="list-group-item">
             {{ form_start(delete_form) }}
                 <input type="submit" value="Delete">
             {{ form_end(delete_form) }}

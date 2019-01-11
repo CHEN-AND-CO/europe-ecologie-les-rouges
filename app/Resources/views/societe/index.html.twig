@@ -19,11 +19,11 @@
                 <td>{{ societe.societe }}</td>
                 <td>{{ societe.adresse }}</td>
                 <td>
-                    <ul>
-                        <li>
+                    <ul class="list-group">
+                        <li class="list-group-item">
                             <a href="{{ path('societe_show', { 'id': societe.id }) }}">show</a>
                         </li>
-                        <li>
+                        <li class="list-group-item">
                             <a href="{{ path('societe_edit', { 'id': societe.id }) }}">edit</a>
                         </li>
                     </ul>
@@ -33,8 +33,8 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
+    <ul class="list-group">
+        <li class="list-group-item">
             <a href="{{ path('societe_new') }}">Create a new societe</a>
         </li>
     </ul>

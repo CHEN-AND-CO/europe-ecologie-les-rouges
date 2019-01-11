@@ -17,11 +17,11 @@
                 <td><a href="{{ path('service_show', { 'id': service.id }) }}">{{ service.id }}</a></td>
                 <td>{{ service.service }}</td>
                 <td>
-                    <ul>
-                        <li>
+                    <ul class="list-group">
+                        <li class="list-group-item">
                             <a href="{{ path('service_show', { 'id': service.id }) }}">show</a>
                         </li>
-                        <li>
+                        <li class="list-group-item">
                             <a href="{{ path('service_edit', { 'id': service.id }) }}">edit</a>
                         </li>
                     </ul>
@@ -31,8 +31,8 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
+    <ul class="list-group">
+        <li class="list-group-item">
             <a href="{{ path('service_new') }}">Create a new service</a>
         </li>
     </ul>

@@ -20,14 +20,14 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
+    <ul class="list-group">
+        <li class="list-group-item">
             <a href="{{ path('ville_index') }}">Back to the list</a>
         </li>
-        <li>
+        <li class="list-group-item">
             <a href="{{ path('ville_edit', { 'id': ville.id }) }}">Edit</a>
         </li>
-        <li>
+        <li class="list-group-item">
             {{ form_start(delete_form) }}
                 <input type="submit" value="Delete">
             {{ form_end(delete_form) }}

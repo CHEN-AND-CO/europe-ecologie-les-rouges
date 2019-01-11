@@ -23,11 +23,11 @@
                 <td>{% if typeDeplacement.created %}{{ typeDeplacement.created|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{% if typeDeplacement.updated %}{{ typeDeplacement.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
-                    <ul>
-                        <li>
+                    <ul class="list-group">
+                        <li class="list-group-item">
                             <a href="{{ path('typedeplacement_show', { 'id': typeDeplacement.id }) }}">show</a>
                         </li>
-                        <li>
+                        <li class="list-group-item">
                             <a href="{{ path('typedeplacement_edit', { 'id': typeDeplacement.id }) }}">edit</a>
                         </li>
                     </ul>
@@ -37,8 +37,8 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
+    <ul class="list-group">
+        <li class="list-group-item">
             <a href="{{ path('typedeplacement_new') }}">Create a new typeDeplacement</a>
         </li>
     </ul>

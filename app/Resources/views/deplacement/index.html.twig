@@ -27,11 +27,11 @@
                 <td>{% if deplacement.updated %}{{ deplacement.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{% if deplacement.validation %}Yes{% else %}No{% endif %}</td>
                 <td>
-                    <ul>
-                        <li>
+                    <ul class="list-group">
+                        <li class="list-group-item">
                             <a href="{{ path('deplacement_show', { 'id': deplacement.id }) }}">show</a>
                         </li>
-                        <li>
+                        <li class="list-group-item">
                             <a href="{{ path('deplacement_edit', { 'id': deplacement.id }) }}">edit</a>
                         </li>
                     </ul>
@@ -41,8 +41,8 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
+    <ul class="list-group">
+        <li class="list-group-item">
             <a href="{{ path('deplacement_new') }}">Create a new deplacement</a>
         </li>
     </ul>

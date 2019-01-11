@@ -19,11 +19,11 @@
                 <td>{{ ville.ville }}</td>
                 <td>{{ ville.cp }}</td>
                 <td>
-                    <ul>
-                        <li>
+                    <ul class="list-group">
+                        <li class="list-group-item">
                             <a href="{{ path('ville_show', { 'id': ville.id }) }}">show</a>
                         </li>
-                        <li>
+                        <li class="list-group-item">
                             <a href="{{ path('ville_edit', { 'id': ville.id }) }}">edit</a>
                         </li>
                     </ul>
@@ -33,8 +33,8 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
+    <ul class="list-group">
+        <li class="list-group-item">
             <a href="{{ path('ville_new') }}">Create a new ville</a>
         </li>
     </ul>
