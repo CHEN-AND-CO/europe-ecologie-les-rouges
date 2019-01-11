@@ -5,7 +5,7 @@
 ### Ramène l’ensemble des déplacements pour tous les utilisateurs
 `/api/deplacements`
 ```json
-{{
+{
 "deplacementJour_id":1,		// ID Déplacement Jour
 "nbKm":15.6,			// Nombre km
 "montant":7,			// Montant
@@ -23,10 +23,6 @@
 "nom":"Rambert",		// NOM USER
 "prenom":"Julien",		// PRENOM USER
 "user_id":2			// ID USER
-}
-...
-{...}
-...
 }
 ```
 (Même type de données renvoyées pour les autres)
