@@ -15,19 +15,19 @@
         <h2> Nombre d'utilisateurs par societés </h2>
 
         <ul>
-            {% for societe in nbusersociete %}
+            {% for societe in infosocietes %}
                 <li> 
                     {{ societe.societe_name }} : {{ societe.nb_user }} utilisateurs 
                 </li>
             {%  endfor  %}
         </ul>
 
-        <h2> Nombre de km par societés </h2>
+        <h2> Nombre de km par mois et par utilisateur (sur l’année en cours) </h2>
 
         <ul>
-            {% for deplacement in nbkmsociete %}
+            {% for deplacement in infosocietes %}
                 <li>
-                    {{ deplacement.societe_name }} : {{ deplacement.nb_km }} km  
+                    {{ deplacement.societe_name }} : {{ deplacement.nb_km }} km | {{ deplacement.nb_user }} utilisateurs
                 </li>
             {% endfor %}
         </ul>

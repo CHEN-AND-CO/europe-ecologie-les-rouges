@@ -34,7 +34,7 @@ class DefaultController extends Controller {
         );
 
         $nbusersociete = $this->SQLRequest(
-                "select societe.societe as societe_name,"
+                "select societe.societe as societe_name, societe.id,"
                 . " count(societe.id) as nb_user"
                 . " from BackOfficeBundle:Societe societe,"
                 . " BackOfficeBundle:User user"
@@ -48,6 +48,7 @@ class DefaultController extends Controller {
                 . " deplacement.annee,"
                 . " user.id as user_id,"
                 . " societe.societe as societe_name,"
+                . " societe.id as societe_id,"
                 . " sum(dJour.nbKm) as nb_km"
                 . " from BackOfficeBundle:Deplacement deplacement,"
                 . " BackOfficeBundle:DeplacementJour dJour,"
@@ -77,13 +78,24 @@ class DefaultController extends Controller {
                 )
         );
 
+        $societinfo = array();
+        foreach ($nbkmsociete as $societ) {
+            foreach ($nbusersociete as $nbusos) {
+                if (!strcmp($nbusos['id'], $societ['societe_id'])) {
+                    $societ['nb_user'] = $nbusos['nb_user'];
+                    array_push($societinfo, $societ);
+
+                    break;
+                }
+            }
+        }
+
         return $this->render(
                         'BackOfficeBundle:Default:stats.html.twig',
                         array(
                             'nbuserville' => $nbuserville,
-                            'nbusersociete' => $nbusersociete,
-                            'nbkmsociete' => $nbkmsociete,
-                            'nbkmuser' => $nbkmuser
+                            'nbkmuser' => $nbkmuser,
+                            'infosocietes' => $societinfo
                         )
         );
     }
