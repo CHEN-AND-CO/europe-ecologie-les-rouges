@@ -14,6 +14,7 @@ front_office_profil:
 front_office_travel_create:
     path:     /mes_deplacements/nouveau
     defaults: { _controller: FrontOfficeBundle:Travel:create }
+    methods:  [GET, POST]
 
 front_office_travel_edit:
     path:     /mes_deplacements/editer/{id}

@@ -4,19 +4,23 @@
 {% block content %}
     <div class="container">
         <h1>Création de déplacement</h1>
-        <form action="{{path('front_office_travels')}}" method="get">
+        <form action="{{path('front_office_travel_create')}}" method="POST">
             <div class="form-group">
                 <label>Nombre de km:</label>
-                <input class="form-control" type="text" value="" required="" minlength="1" pattern="w+" autofocus="">
-            <div class="form-group">
-                <label>Date</label>
-                <input class="form-control" type="date" value="" required="" minlength="" pattern=""></div>
-            <div class="form-group">
-                <label>Moyen de locomotion</label>
-                <input class="form-control" type="text" value="" required="" inputmode="">           
-            <div>
-                <button class="btn btn-primary" type="button">Ajouter</button>
+                <input name="nbKm" class="form-control" type="number" value="" required="" minlength="1" pattern="w+" autofocus="">
+                <div class="form-group">
+                    <label>Date</label>
+                    <input name="datec" class="form-control" type="date" value="" required="" minlength="" pattern=""></div>
+                <div class="form-group">
+                    <label>Moyen de locomotion</label>
+                    <input name="typedeplacement" class="form-control" type="text" value="" required="" inputmode="">           
+                    <div>
+                        <button name="submit" value="true" class="btn btn-primary">Ajouter</button>
+                    </div>
+                </div>
             </div>
+            
+            <input name="userid" value="2" type="hidden"/>
         </form>
     </div>
 

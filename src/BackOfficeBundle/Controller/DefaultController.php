@@ -34,7 +34,7 @@ class DefaultController extends Controller {
         );
 
         $nbusersociete = $this->SQLRequest(
-                "select societe.societe,"
+                "select societe.societe as societe_name,"
                 . " count(societe.id) as nb_user"
                 . " from BackOfficeBundle:Societe societe,"
                 . " BackOfficeBundle:User user"
@@ -48,7 +48,8 @@ class DefaultController extends Controller {
                 . " deplacement.annee,"
                 . " user.id as user_id,"
                 . " societe.societe as societe_name,"
-                . " sum(dJour.nbKm) as nb_km"
+                . " sum(dJour.nbKm) as nb_km,"
+                . " count(societe.id) as nb_user"
                 . " from BackOfficeBundle:Deplacement deplacement,"
                 . " BackOfficeBundle:DeplacementJour dJour,"
                 . " BackOfficeBundle:Societe societe,"

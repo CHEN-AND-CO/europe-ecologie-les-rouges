@@ -3,5 +3,20 @@
 {% block title %} Accueil BackOffice {% endblock %}
 
 {% block content %}
-    <p> Bienvenue sur la page d'accueil du BackOffice ! </p>
+    <h3 style="text-align: center"> Bienvenue sur la page d'accueil du BackOffice ! </h3>
+    <br>
+    <br>
+    <p></p>
+    <a type="button" class="btn btn-outline-primary btn-lg btn-block" href="{{ path('back_office_stats') }}">Statistiques</a>
+    <br>
+    <a type="button" class="btn btn-outline-secondary btn-lg btn-block" href="{{ path('deplacement_index') }}">Deplacements</a>
+    <a type="button" class="btn btn-outline-secondary btn-lg btn-block" href="{{ path('deplacementjour_index') }}">Deplacements Jour</a>
+    <a type="button" class="btn btn-outline-secondary btn-lg btn-block" href="{{ path('service_index') }}">Services</a>
+    <a type="button" class="btn btn-outline-secondary btn-lg btn-block" href="{{ path('societe_index') }}">Sociétés</a>
+    <a type="button" class="btn btn-outline-secondary btn-lg btn-block" href="{{ path('typedeplacement_index') }}">Types Déplacement</a>
+    <a type="button" class="btn btn-outline-secondary btn-lg btn-block" href="{{ path('typeuser_index') }}">Types Utilisateur</a>
+    <a type="button" class="btn btn-outline-secondary btn-lg btn-block" href="{{ path('user_index') }}">Utilisateurs</a>
+    <a type="button" class="btn btn-outline-secondary btn-lg btn-block" href="{{ path('ville_index') }}">Villes</a>
+    
+    <br>
 {% endblock %}
