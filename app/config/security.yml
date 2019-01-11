@@ -41,7 +41,7 @@ security:
     access_control:
         #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY && !IS_AUTHENTICADED_FULLY }
         - { path: ^/admindep, roles: ROLE_ADMIN }
-        - { path: ^/[^l], roles: ROLE_USER }
+        - { path: ^/[^l], roles: {ROLE_USER, ROLE_ADMIN} }
         
 
 

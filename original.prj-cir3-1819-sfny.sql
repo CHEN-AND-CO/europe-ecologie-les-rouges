@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.6.6deb5
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 11 jan. 2019 à 22:23
--- Version du serveur :  5.7.23
--- Version de PHP :  7.2.10
+-- Client :  localhost:3306
+-- Généré le :  Mar 02 Octobre 2018 à 16:48
+-- Version du serveur :  5.7.23-0ubuntu0.18.04.1
+-- Version de PHP :  7.2.10-0ubuntu0.18.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -19,8 +17,11 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `frm1`
+-- Base de données :  `prj-cir3-1819-sfny`
 --
+
+CREATE DATABASE IF NOT EXISTS `frm1` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `frm1`;
 
 -- --------------------------------------------------------
 
@@ -28,34 +29,24 @@ SET time_zone = "+00:00";
 -- Structure de la table `deplacement`
 --
 
-DROP TABLE IF EXISTS `deplacement`;
-CREATE TABLE IF NOT EXISTS `deplacement` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `deplacement` (
+  `id` int(11) NOT NULL,
   `annee` int(11) DEFAULT NULL,
   `mois` int(11) DEFAULT NULL,
   `date_validation` date DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   `updated` datetime DEFAULT NULL,
-  `user_id` int(11) DEFAULT NULL,
+  `user_id` int(11) NOT NULL,
   `user_id1` int(11) DEFAULT NULL,
-  `validation` tinyint(4) DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE,
-  KEY `fk_deplacement_user1_idx` (`user_id`),
-  KEY `fk_deplacement_user2_idx` (`user_id1`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+  `validation` tinyint(4) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `deplacement`
+-- Contenu de la table `deplacement`
 --
 
 INSERT INTO `deplacement` (`id`, `annee`, `mois`, `date_validation`, `created`, `updated`, `user_id`, `user_id1`, `validation`) VALUES
-(1, 2018, 1, NULL, NULL, NULL, 2, NULL, NULL),
-(2, 2019, 1, NULL, NULL, NULL, 1, NULL, NULL),
-(3, 2019, 1, NULL, NULL, NULL, 2, NULL, NULL),
-(4, 2019, 1, NULL, NULL, NULL, 3, NULL, NULL),
-(5, 2019, 2, NULL, NULL, NULL, 1, NULL, NULL),
-(7, 2019, 3, NULL, NULL, NULL, 2, NULL, NULL),
-(8, 2019, 5, NULL, NULL, NULL, 2, NULL, NULL);
+(1, 2018, 1, NULL, NULL, NULL, 2, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -63,34 +54,25 @@ INSERT INTO `deplacement` (`id`, `annee`, `mois`, `date_validation`, `created`, 
 -- Structure de la table `deplacement_jour`
 --
 
-DROP TABLE IF EXISTS `deplacement_jour`;
-CREATE TABLE IF NOT EXISTS `deplacement_jour` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `deplacement_jour` (
+  `id` int(11) NOT NULL,
   `nb_km` double DEFAULT NULL,
   `montant` double DEFAULT NULL,
   `jour` int(11) DEFAULT NULL,
   `date` date DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   `updated` datetime DEFAULT NULL,
-  `type_deplacement_id` int(11) DEFAULT NULL,
-  `deplacement_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE,
-  KEY `fk_deplacement_jour_type_deplacement1_idx` (`type_deplacement_id`),
-  KEY `fk_deplacement_jour_deplacement1_idx` (`deplacement_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+  `type_deplacement_id` int(11) NOT NULL,
+  `deplacement_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `deplacement_jour`
+-- Contenu de la table `deplacement_jour`
 --
 
 INSERT INTO `deplacement_jour` (`id`, `nb_km`, `montant`, `jour`, `date`, `created`, `updated`, `type_deplacement_id`, `deplacement_id`) VALUES
 (1, 15.6, 7, 3, NULL, NULL, NULL, 1, 1),
-(2, 15.6, 7, 5, NULL, NULL, NULL, 1, 1),
-(3, 65, 45, 15, NULL, NULL, NULL, 1, 2),
-(4, 10, 1, 18, NULL, NULL, NULL, 1, 2),
-(5, 4, 0.5, 3, NULL, NULL, NULL, 1, 3),
-(6, 123, 56, 28, NULL, NULL, NULL, 1, 4),
-(7, 345, 12, 14, '2019-01-14', NULL, NULL, 1, 3);
+(2, 15.6, 7, 5, NULL, NULL, NULL, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -98,15 +80,13 @@ INSERT INTO `deplacement_jour` (`id`, `nb_km`, `montant`, `jour`, `date`, `creat
 -- Structure de la table `service`
 --
 
-DROP TABLE IF EXISTS `service`;
-CREATE TABLE IF NOT EXISTS `service` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `service` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+CREATE TABLE `service` (
+  `id` int(11) NOT NULL,
+  `service` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `service`
+-- Contenu de la table `service`
 --
 
 INSERT INTO `service` (`id`, `service`) VALUES
@@ -119,18 +99,15 @@ INSERT INTO `service` (`id`, `service`) VALUES
 -- Structure de la table `societe`
 --
 
-DROP TABLE IF EXISTS `societe`;
-CREATE TABLE IF NOT EXISTS `societe` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `societe` (
+  `id` int(11) NOT NULL,
   `societe` varchar(45) DEFAULT NULL,
   `adresse` varchar(255) DEFAULT NULL,
-  `ville_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE,
-  KEY `fk_societe_ville1_idx` (`ville_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  `ville_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `societe`
+-- Contenu de la table `societe`
 --
 
 INSERT INTO `societe` (`id`, `societe`, `adresse`, `ville_id`) VALUES
@@ -144,22 +121,20 @@ INSERT INTO `societe` (`id`, `societe`, `adresse`, `ville_id`) VALUES
 -- Structure de la table `type_deplacement`
 --
 
-DROP TABLE IF EXISTS `type_deplacement`;
-CREATE TABLE IF NOT EXISTS `type_deplacement` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `type_deplacement` (
+  `id` int(11) NOT NULL,
   `type_deplacement` varchar(45) DEFAULT NULL,
   `montant` double DEFAULT NULL,
   `created` datetime DEFAULT NULL,
-  `updated` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `updated` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `type_deplacement`
+-- Contenu de la table `type_deplacement`
 --
 
 INSERT INTO `type_deplacement` (`id`, `type_deplacement`, `montant`, `created`, `updated`) VALUES
-(1, 'velo uniquement', 0.49, NULL, NULL);
+(1, 'velo uiquement', 0.49, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -167,15 +142,13 @@ INSERT INTO `type_deplacement` (`id`, `type_deplacement`, `montant`, `created`, 
 -- Structure de la table `type_user`
 --
 
-DROP TABLE IF EXISTS `type_user`;
-CREATE TABLE IF NOT EXISTS `type_user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `type_user` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+CREATE TABLE `type_user` (
+  `id` int(11) NOT NULL,
+  `type_user` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `type_user`
+-- Contenu de la table `type_user`
 --
 
 INSERT INTO `type_user` (`id`, `type_user`) VALUES
@@ -188,35 +161,27 @@ INSERT INTO `type_user` (`id`, `type_user`) VALUES
 -- Structure de la table `user`
 --
 
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE IF NOT EXISTS `user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
   `nom` varchar(100) DEFAULT NULL,
   `prenom` varchar(100) DEFAULT NULL,
   `adresse` varchar(255) DEFAULT NULL,
   `distance_init` double DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   `updated` datetime DEFAULT NULL,
-  `type_user_id` int(11) DEFAULT NULL,
-  `societe_id` int(11) DEFAULT NULL,
-  `service_id` int(11) DEFAULT NULL,
-  `ville_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE,
-  KEY `fk_user_type_user_idx` (`type_user_id`),
-  KEY `fk_user_societe1_idx` (`societe_id`),
-  KEY `fk_user_service1_idx` (`service_id`),
-  KEY `fk_user_ville1_idx` (`ville_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+  `type_user_id` int(11) NOT NULL,
+  `societe_id` int(11) NOT NULL,
+  `service_id` int(11) NOT NULL,
+  `ville_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `user`
+-- Contenu de la table `user`
 --
 
 INSERT INTO `user` (`id`, `nom`, `prenom`, `adresse`, `distance_init`, `created`, `updated`, `type_user_id`, `societe_id`, `service_id`, `ville_id`) VALUES
 (1, 'admin', NULL, NULL, NULL, '2018-09-12 00:00:00', '2018-09-12 00:00:00', 1, 1, 1, 1),
-(2, 'Rambert', 'Julien', '1 Rue du Milieu', 15.6, '2018-09-12 00:00:00', '2019-01-11 22:13:37', 2, 2, 2, 1),
-(3, 'Le Torc\'h', 'Kévin', '43 Rue Calmette et Guérin', 10, '2019-01-02 12:57:00', NULL, 1, 1, 2, 1),
-(5, 'B Moigne', 'Alex', 'Stebre', 12, NULL, NULL, 1, 1, 1, 5);
+(2, 'Rambert', 'Julien', '7 Rue du Milieu', 15.6, '2018-09-12 00:00:00', '2018-09-12 00:00:00', 2, 1, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -224,16 +189,14 @@ INSERT INTO `user` (`id`, `nom`, `prenom`, `adresse`, `distance_init`, `created`
 -- Structure de la table `ville`
 --
 
-DROP TABLE IF EXISTS `ville`;
-CREATE TABLE IF NOT EXISTS `ville` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `ville` (
+  `id` int(11) NOT NULL,
   `ville` varchar(100) DEFAULT NULL,
-  `cp` varchar(5) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+  `cp` varchar(5) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `ville`
+-- Contenu de la table `ville`
 --
 
 INSERT INTO `ville` (`id`, `ville`, `cp`) VALUES
@@ -246,7 +209,112 @@ INSERT INTO `ville` (`id`, `ville`, `cp`) VALUES
 (7, 'toulon', '83000');
 
 --
--- Contraintes pour les tables déchargées
+-- Index pour les tables exportées
+--
+
+--
+-- Index pour la table `deplacement`
+--
+ALTER TABLE `deplacement`
+  ADD PRIMARY KEY (`id`) USING BTREE,
+  ADD KEY `fk_deplacement_user1_idx` (`user_id`),
+  ADD KEY `fk_deplacement_user2_idx` (`user_id1`);
+
+--
+-- Index pour la table `deplacement_jour`
+--
+ALTER TABLE `deplacement_jour`
+  ADD PRIMARY KEY (`id`) USING BTREE,
+  ADD KEY `fk_deplacement_jour_type_deplacement1_idx` (`type_deplacement_id`),
+  ADD KEY `fk_deplacement_jour_deplacement1_idx` (`deplacement_id`);
+
+--
+-- Index pour la table `service`
+--
+ALTER TABLE `service`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `societe`
+--
+ALTER TABLE `societe`
+  ADD PRIMARY KEY (`id`) USING BTREE,
+  ADD KEY `fk_societe_ville1_idx` (`ville_id`);
+
+--
+-- Index pour la table `type_deplacement`
+--
+ALTER TABLE `type_deplacement`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `type_user`
+--
+ALTER TABLE `type_user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`) USING BTREE,
+  ADD KEY `fk_user_type_user_idx` (`type_user_id`),
+  ADD KEY `fk_user_societe1_idx` (`societe_id`),
+  ADD KEY `fk_user_service1_idx` (`service_id`),
+  ADD KEY `fk_user_ville1_idx` (`ville_id`);
+
+--
+-- Index pour la table `ville`
+--
+ALTER TABLE `ville`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT pour les tables exportées
+--
+
+--
+-- AUTO_INCREMENT pour la table `deplacement`
+--
+ALTER TABLE `deplacement`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT pour la table `deplacement_jour`
+--
+ALTER TABLE `deplacement_jour`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT pour la table `service`
+--
+ALTER TABLE `service`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT pour la table `societe`
+--
+ALTER TABLE `societe`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT pour la table `type_deplacement`
+--
+ALTER TABLE `type_deplacement`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT pour la table `type_user`
+--
+ALTER TABLE `type_user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT pour la table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT pour la table `ville`
+--
+ALTER TABLE `ville`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
+-- Contraintes pour les tables exportées
 --
 
 --
@@ -277,7 +345,6 @@ ALTER TABLE `user`
   ADD CONSTRAINT `fk_user_societe1` FOREIGN KEY (`societe_id`) REFERENCES `societe` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_user_type_user` FOREIGN KEY (`type_user_id`) REFERENCES `type_user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_user_ville1` FOREIGN KEY (`ville_id`) REFERENCES `ville` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
