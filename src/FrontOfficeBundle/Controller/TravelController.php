@@ -114,11 +114,14 @@ class TravelController extends Controller {
                     $deplacementjour->getDeplacement()->getMois(),
                     $deplacementjour->getJour()
             );
+            
+            $moyens = $this->SQLRequest("select td from BackOfficeBundle:TypeDeplacement td");
 
             return $this->render('FrontOfficeBundle:Travel:edit.html.twig',
                             array(
                                 'deplacement' => $deplacementjour,
-                                'datecreat' => $datein
+                                'datecreat' => $datein,
+                                'moyens'=>$moyens
                             )
             );
         }
