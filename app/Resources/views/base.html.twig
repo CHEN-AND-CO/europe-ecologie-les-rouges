@@ -2,6 +2,9 @@
 
 {% block title %}Welcome!{% endblock %}
 {% block stylesheets %}{% endblock %}
-
-{% block body %}{% endblock %}
+{% block overbody %}
+    <div class="table-responsive">
+        {% block body %}{% endblock %}
+    </div>
+{% endblock %}
 {% block javascripts %}{% endblock %}

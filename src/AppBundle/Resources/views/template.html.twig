@@ -12,10 +12,12 @@
     {% include '@App/header.html.twig' %}
 {%endblock %}
 
-{% block body %}
-    {% block content %}
+{%  block overbody %}
+    {% block body %}
+        {% block content %}
+        {% endblock %}
     {% endblock %}
-{% endblock %}
+{%  endblock %}
 
 {% block footer_include %}
     {% include '@App/footer.html.twig' %}
