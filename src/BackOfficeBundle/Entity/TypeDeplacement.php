@@ -156,4 +156,8 @@ class TypeDeplacement
     {
         return $this->updated;
     }
+    
+    public function __toString() {
+        return strval($this->getTypeDeplacement());
+    }
 }
