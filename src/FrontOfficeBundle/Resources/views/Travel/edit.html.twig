@@ -2,7 +2,8 @@
 
 {% block title %} Accueil {% endblock %}
 {% block content %}
-    <form action="{{path('front_office_travel_edit', {'id': deplacement.id})}}" method="POST">
+    <div class="container">
+        <form action="{{path('front_office_travel_edit', {'id': deplacement.id})}}" method="POST">
         <div class="form-group">
             <input name="id" value="{{ deplacement.id }}" type="hidden" />
             <label>Nombre de km:</label>
@@ -19,7 +20,7 @@
                 </div>
             </div>
         </div>
-
-        <input name="userid" value="2" type="hidden"/>
-    </form>
+            <input name="userid" value="2" type="hidden"/>
+        </form>
+    </div>
 {% endblock %}
