@@ -4,7 +4,7 @@
 ## API Rest
 ### Ramène l’ensemble des déplacements pour tous les utilisateurs
 `/api/deplacements`
-```json
+```javascript
 {
 "deplacementJour_id":1,		// ID Déplacement Jour
 "nbKm":15.6,			// Nombre km
