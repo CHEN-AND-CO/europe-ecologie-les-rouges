@@ -1,0 +1,15 @@
+deplacements_list:
+    path:     /
+    defaults: { _controller: "RestBundle:DeplacementsUser:deplacements" }
+    
+deplacements_user:
+    path:     /user/{id}
+    defaults: { _controller: "RestBundle:DeplacementsUser:deplacementsUser" }
+    
+deplacements_user_annee:
+    path:     /user/{id}/annee/{annee}
+    defaults: { _controller: "RestBundle:DeplacementsUser:deplacementsUserAnnee" }
+    
+deplacements_user_annee_mois:
+    path:     /user/{id}/annee/{annee}/mois/{mois}
+    defaults: { _controller: "RestBundle:DeplacementsUser:deplacementsUserAnneeMois" }

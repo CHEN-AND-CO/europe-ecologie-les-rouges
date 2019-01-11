@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Deplacementjours list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nbkm</th>
+                <th>Montant</th>
+                <th>Jour</th>
+                <th>Date</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for deplacementJour in deplacementJours %}
+            <tr>
+                <td><a href="{{ path('deplacementjour_show', { 'id': deplacementJour.id }) }}">{{ deplacementJour.id }}</a></td>
+                <td>{{ deplacementJour.nbKm }}</td>
+                <td>{{ deplacementJour.montant }}</td>
+                <td>{{ deplacementJour.jour }}</td>
+                <td>{% if deplacementJour.date %}{{ deplacementJour.date|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if deplacementJour.created %}{{ deplacementJour.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if deplacementJour.updated %}{{ deplacementJour.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('deplacementjour_show', { 'id': deplacementJour.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('deplacementjour_edit', { 'id': deplacementJour.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('deplacementjour_new') }}">Create a new deplacementJour</a>
+        </li>
+    </ul>
+{% endblock %}

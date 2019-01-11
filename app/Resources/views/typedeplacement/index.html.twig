@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Typedeplacements list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Typedeplacement</th>
+                <th>Montant</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for typeDeplacement in typeDeplacements %}
+            <tr>
+                <td><a href="{{ path('typedeplacement_show', { 'id': typeDeplacement.id }) }}">{{ typeDeplacement.id }}</a></td>
+                <td>{{ typeDeplacement.typeDeplacement }}</td>
+                <td>{{ typeDeplacement.montant }}</td>
+                <td>{% if typeDeplacement.created %}{{ typeDeplacement.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if typeDeplacement.updated %}{{ typeDeplacement.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('typedeplacement_show', { 'id': typeDeplacement.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('typedeplacement_edit', { 'id': typeDeplacement.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('typedeplacement_new') }}">Create a new typeDeplacement</a>
+        </li>
+    </ul>
+{% endblock %}

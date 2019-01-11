@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Deplacementjour</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ deplacementJour.id }}</td>
+            </tr>
+            <tr>
+                <th>Nbkm</th>
+                <td>{{ deplacementJour.nbKm }}</td>
+            </tr>
+            <tr>
+                <th>Montant</th>
+                <td>{{ deplacementJour.montant }}</td>
+            </tr>
+            <tr>
+                <th>Jour</th>
+                <td>{{ deplacementJour.jour }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{% if deplacementJour.date %}{{ deplacementJour.date|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{% if deplacementJour.created %}{{ deplacementJour.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updated</th>
+                <td>{% if deplacementJour.updated %}{{ deplacementJour.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('deplacementjour_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('deplacementjour_edit', { 'id': deplacementJour.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

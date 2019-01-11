@@ -6,6 +6,10 @@ front_office:
     resource: "@FrontOfficeBundle/Resources/config/routing.yml"
     prefix:   /
 
+rest:
+    resource: "@RestBundle/Resources/config/routing.yml"
+    prefix:   /api
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation

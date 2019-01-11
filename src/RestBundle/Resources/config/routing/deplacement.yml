@@ -1,0 +1,14 @@
+deplacement_index:
+    path:     /
+    defaults: { _controller: "RestBundle:Deplacement:index" }
+    methods:  GET
+
+deplacement_show:
+    path:     /{id}/show
+    defaults: { _controller: "RestBundle:Deplacement:show" }
+    methods:  GET
+
+deplacement_new:
+    path:     /new
+    defaults: { _controller: "RestBundle:Deplacement:new" }
+    methods:  [GET, POST]
