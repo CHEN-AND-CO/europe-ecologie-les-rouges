@@ -49,7 +49,6 @@ class DefaultController extends Controller {
                 . " user.id as user_id,"
                 . " societe.societe as societe_name,"
                 . " sum(dJour.nbKm) as nb_km,"
-                . " count(societe.id) as nb_user"
                 . " from BackOfficeBundle:Deplacement deplacement,"
                 . " BackOfficeBundle:DeplacementJour dJour,"
                 . " BackOfficeBundle:Societe societe,"
