@@ -8,8 +8,9 @@ front_office_travels:
     defaults: { _controller: FrontOfficeBundle:Travel:index }
 
 front_office_profil:
-    path:     /mon_profil
+    path:     /mon_profil/{id}
     defaults: { _controller: FrontOfficeBundle:Default:profil }
+    methods:  [GET, POST]
 
 front_office_travel_create:
     path:     /mes_deplacements/nouveau
@@ -19,6 +20,7 @@ front_office_travel_create:
 front_office_travel_edit:
     path:     /mes_deplacements/editer/{id}
     defaults: { _controller: FrontOfficeBundle:Travel:edit }
+    methods:  [GET, POST]
 
 front_office_travel_delete:
     path:     /mes_deplacements/supprimer/{id}

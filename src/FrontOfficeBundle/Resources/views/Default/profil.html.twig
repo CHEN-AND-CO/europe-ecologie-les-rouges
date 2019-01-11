@@ -6,22 +6,37 @@
     <div class="container" id="profil-form">
         <h1>Editer mon profil</h1>
         <hr>
-        <form>
+        <form action="{{path('front_office_profil', {'id': user.id})}}" method="POST">
             <div class="form-group">
                 <label>Nom:</label>
-                <input class="form-control" type="text" value="Rambert" required="" minlength="3" pattern="w+" autofocus=""><label>Prénom:</label><input class="form-control" type="text" value="Julien" required="" minlength="3" pattern="w+"></div>
+                <input class="form-control" name="nom" type="text" value="{{ user.nom }}" required="" minlength="3" autofocus="">
+
+                <label>Prénom:</label>
+                <input class="form-control" name="prenom" type="text" value="{{ user.prenom }}" required="" minlength="3"></div>
             <div class="form-group">
                 <label>Nom de l'entreprise:</label>
-                <input class="form-control" type="text" value="Thalès" required="" minlength="3" pattern="w+"></div>
+                <select class="form-control" name="entreprise" value="{{ user.societe.id }}">
+                    {% for societe in societes %}
+                        <option value="{{ societe.id }}">{{ societe.societe }}</option>
+                    {%  endfor  %}
+                </select>
             <div class="form-group">
-                <label>Mail:</label>
-                <input class="form-control" type="email" value="julien.rambert@wanadoo.fr" required="" inputmode="email"></div><input type="checkbox"><label>Changer le mot de passe</label>
+                <label>Adresse:</label>
+                <input class="form-control" name="adresse" type="text" value="{{ user.adresse }}">
+            </div>
+            <input type="checkbox">
+            <label>Changer le mot de passe</label>
             <div class="form-group" id="password-group">
                 <label>Mot de passe:</label>
-                <input class="form-control" type="password"><label>Confirmer le mot de passe:</label><input class="form-control" type="password"></div>
-            <div>
-                <button class="btn btn-primary" type="button">Enregistrer</button>
+                <input class="form-control" name="pass1" type="password" disabled="">
+
+                <label>Confirmer le mot de passe:</label>
+                <input class="form-control" name="pass2" type="password" disabled="">
             </div>
+            <div>
+                <button name="submit" value="true" class="btn btn-primary">Enregistrer</button>
+            </div>
+            <input name="userid" value="2" type="hidden"/>
         </form>
     </div>
 
