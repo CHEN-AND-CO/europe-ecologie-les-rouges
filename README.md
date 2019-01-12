@@ -1,5 +1,19 @@
 
+
 # Projet PHP/Symfony3 2k18 CIR3 KLT/ABM
+
+## Installation
+Connectez vous sur mysql
+```
+source prj-cir3-1819-sfny.sql;
+SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
+exit;
+```
+Puis
+```
+php bin/console cache:clear --env=prod --no-debug
+
+```
 
 ## API Rest
 ### Ramène l’ensemble des déplacements pour tous les utilisateurs
